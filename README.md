@@ -29,20 +29,6 @@ Bootstrap: Ensures a responsive and visually appealing interface.
 
 
 
-inventory-management-system/
-│
-├── addons/                  # Custom Odoo modules
-│   ├── inventory/           # Inventory management module
-│   ├── dashboard/           # Dashboard module
-│   └── ...                  # Additional modules
-│
-├── static/                  # Static assets (CSS, JS, images)
-├── templates/               # OWL JS templates
-├── odoo.conf                # Odoo configuration file
-├── requirements.txt         # Python dependencies
-└── README.md                # Project documentation
-
-
 Usage
 Login: Access the system using valid user credentials.
 Dashboard: View stock levels, bin-rack utilization, and transaction summaries.
@@ -60,8 +46,11 @@ Responsive Design: Bootstrap ensures a consistent experience across devices.
 
 
 ![Screenshot 2025-01-01 185536](https://github.com/user-attachments/assets/d3b21236-290b-46b2-b147-12d515bbdca8)
+
+![Screenshot 2025-01-01 185450](https://github.com/user-attachments/assets/84577974-9178-4125-9354-2e26d7e8bff1)
+
 ![Screenshot 2025-01-01 185514](https://github.com/user-attachments/assets/3326f19a-31a8-4d89-a85e-39217204eb28)
 ![Screenshot 2025-01-01 185504](https://github.com/user-attachments/assets/3f12eb8d-2552-4534-98f6-0f262844f195)
-![Screenshot 2025-01-01 185450](https://github.com/user-attachments/assets/84577974-9178-4125-9354-2e26d7e8bff1)
+
 ![Screenshot 2025-01-01 185435](https://github.com/user-attachments/assets/aad6bb1e-a380-417a-901a-50860eb5eed1)
 ![Screenshot 2025-01-01 185526](https://github.com/user-attachments/assets/7ee15119-489c-48cd-87d9-0d04db415e03)
