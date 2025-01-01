@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates>
+    <t t-name="InternalInventory">
+       <div class="bodypurchase1">
+           <div class="twogrid1">
+      <div class="leftdiv1">
+        <div>
+          <h1 class="purchase-head1">
+            Stock  <br />
+             Internal<br />Management
+          </h1>
+          <button class="buttons-purchase" t-on-click="button_click_for_form">New Internal Transfer</button>
+        </div>
+      </div>
+      <t t-if="state.form">
+       <div class="rightdiv1">
+        
+<div class="form-container">
+        <form class="contactForm" id="contactForm">
+        <div class="title-inventory">
+          <h2 class="h2-inventory">New Stock Internal Form </h2>
+        </div>    
+        <div class="box-form-content">
+
+            <div class="form-allocation">
+            
+            <div class="mydate">
+                <div class="input-group">
+                    <label for="date">Date </label>
+                    <div class="input-icon" style="width: 191px;">
+                        <input type="text" id="date" name="date" t-att-value="state.today" placeholder=" " required="true" readonly="true"/>
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="input-group">
+                <label for="vendorname">Vendor Name <span style="position:relative;right: 12px;bottom: 3px;"><svg width="30px" height="30px" viewBox="-209.92 -209.92 931.84 931.84" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#d25b5b" stroke="#d25b5b">
+
+                      <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+
+                      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="23.552"/>
+
+                      <g id="SVGRepo_iconCarrier"> <title>mandatory</title> <g id="Page-1" stroke-width="0.00512" fill="none" fill-rule="evenodd"> <g id="icon" fill="#e91c1c" transform="translate(143.376623, 149.333333)"> <polygon id="*" points="152.103896 213.333333 198.372294 180.08658 144.069264 119.411255 225.246753 103.619048 208.34632 49.3160173 131.324675 83.3939394 140.744589 2.84217094e-14 84.2251082 2.84217094e-14 93.6450216 83.3939394 16.6233766 49.3160173 0 103.619048 80.9004329 119.411255 26.5974026 180.08658 73.1428571 213.333333 112.484848 141.298701"> </polygon> </g> </g> </g>
+
+                      </svg></span></label>
+                <div class="input-icon" style="width: 192px;height: 64px;">
+                
+                     <select  class="select-one"  style="font-weight: 400 !important;" t-on-change="(event) => vendorchange(event)">  
+                            <option value="select">Select Vendor</option>
+                                <t t-foreach="state.partnerlist" t-as="partner" t-key="partner.id">
+                                    <option t-att-value="partner.id" t-esc="partner.name"/>
+                                </t>
+                    </select>
+                 
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="operationtype">Operation Type</label>
+                <div class="input-icon" style="height: 64px;">
+                    <input type="text" id="operationtype" name="operationtype" value="Stock Inward" placeholder=" " required="true" readonly="true" />
+                    <i class="fas fa-user" style="display:none;"></i>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="recievelocation">Recieved by <span style="position:relative;right: 12px;bottom: 3px;"><svg width="30px" height="30px" viewBox="-209.92 -209.92 931.84 931.84" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#d25b5b" stroke="#d25b5b">
+
+                      <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+
+                      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="23.552"/>
+
+                      <g id="SVGRepo_iconCarrier"> <title>mandatory</title> <g id="Page-1" stroke-width="0.00512" fill="none" fill-rule="evenodd"> <g id="icon" fill="#e91c1c" transform="translate(143.376623, 149.333333)"> <polygon id="*" points="152.103896 213.333333 198.372294 180.08658 144.069264 119.411255 225.246753 103.619048 208.34632 49.3160173 131.324675 83.3939394 140.744589 2.84217094e-14 84.2251082 2.84217094e-14 93.6450216 83.3939394 16.6233766 49.3160173 0 103.619048 80.9004329 119.411255 26.5974026 180.08658 73.1428571 213.333333 112.484848 141.298701"> </polygon> </g> </g> </g>
+
+                      </svg></span></label>
+                <div class="input-icon">
+                    <input type="text" id="recievedby" name="recievedby" t-att-value="state.formData.recieveby" placeholder=" " required="true" readonly="true"  />
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+       
+            
+            <div class="input-group">
+              <label for="sonumber">Source Number</label>
+              <div class="input-icon">
+                  <input type="text" id="sonumber" name="sonumber" placeholder=" " required="true" />
+                  <i class="fas fa-envelope"></i>
+              </div>
+          </div>
+          
+
+         
+          </div>
+
+            <div class="group-table-area1">
+          
+            <div class="product-tbl">
+
+       
+
+            <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+              <thead style="background: #257650;color: white;">
+                  <tr class="head-row-set">
+                      <th class="sno">SNo</th>
+                     <th class="name">Product</th>
+                        <th class="location">Bin Location</th>
+                       
+                      <th class="count">Quantity(units)</th>
+                  </tr>
+        </thead>
+              <tbody >
+              <t t-if="state.addproduct.length >0 ">
+               <t t-foreach="state.addproduct" t-as="product" t-key="product.id">
+             <tr class="input-row-set new-row-set" id="row1">
+            <td class="table-td-inventory">
+                <span t-esc="product.id"></span>
+            </td>
+           <td class="table-td-inventory input-icon  ">
+                  <select 
+                      class="select-one product-list " 
+                      style="font-weight: 400 !important; border:none;width: 160px;" 
+                      t-on-change="(event) => onchangeproduct(event, product.id)"
+                  >
+                      <option value=""> Select Product </option>
+                      <t t-foreach="state.product_list" t-as="product" t-key="product.id">
+                          <option t-att-value="product.id" t-esc="product.name"></option>
+                      </t>
+                  </select>
+              </td>
+
+             <td class="table-td-inventory input-icon ">
+                <select 
+                      class="select-one product-list " 
+                      style="font-weight: 400 !important; border:none;width: 160px;" 
+                      t-on-change="(event) => onchangelocation(event, product.id)"
+                  >
+                      <option value=""> Select Location </option>
+                      <t t-foreach="state.bin_location_list" t-as="location" t-key="location.id">
+                          <option t-att-value="location.id" t-esc="location.name"></option>
+                      </t>
+                  </select>
+            </td>
+            <td class="table-td-inventory">
+                <input type="text" name="units" t-model="product.units" id="units" />
+            </td>
+            <td class="table-td-inventory delete-table-data" t-on-click="() => removebox(product.id)">
+                    <svg  fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                        width="20px" height="20px" viewBox="0 0 482.428 482.429" style="cursor:pointer"
+                        xml:space="preserve">
+                     <g>
+                       <g>
+                         <path d="M381.163,57.799h-75.094C302.323,25.316,274.686,0,241.214,0c-33.471,0-61.104,25.315-64.85,57.799h-75.098
+                           c-30.39,0-55.111,24.728-55.111,55.117v2.828c0,23.223,14.46,43.1,34.83,51.199v260.369c0,30.39,24.724,55.117,55.112,55.117
+                           h210.236c30.389,0,55.111-24.729,55.111-55.117V166.944c20.369-8.1,34.83-27.977,34.83-51.199v-2.828
+                           C436.274,82.527,411.551,57.799,381.163,57.799z M241.214,26.139c19.037,0,34.927,13.645,38.443,31.66h-76.879
+                           C206.293,39.783,222.184,26.139,241.214,26.139z M375.305,427.312c0,15.978-13,28.979-28.973,28.979H136.096
+                           c-15.973,0-28.973-13.002-28.973-28.979V170.861h268.182V427.312z M410.135,115.744c0,15.978-13,28.979-28.973,28.979H101.266
+                           c-15.973,0-28.973-13.001-28.973-28.979v-2.828c0-15.978,13-28.979,28.973-28.979h279.897c15.973,0,28.973,13.001,28.973,28.979
+                           V115.744z"/>
+                         <path d="M171.144,422.863c7.218,0,13.069-5.853,13.069-13.068V262.641c0-7.216-5.852-13.07-13.069-13.07
+                           c-7.217,0-13.069,5.854-13.069,13.07v147.154C158.074,417.012,163.926,422.863,171.144,422.863z"/>
+                         <path d="M241.214,422.863c7.218,0,13.07-5.853,13.07-13.068V262.641c0-7.216-5.854-13.07-13.07-13.07
+                           c-7.217,0-13.069,5.854-13.069,13.07v147.154C228.145,417.012,233.996,422.863,241.214,422.863z"/>
+                         <path d="M311.284,422.863c7.217,0,13.068-5.853,13.068-13.068V262.641c0-7.216-5.852-13.07-13.068-13.07
+                           c-7.219,0-13.07,5.854-13.07,13.07v147.154C298.213,417.012,304.067,422.863,311.284,422.863z"/>
+                       </g>
+                     </g>
+                     </svg></td>
+                </tr> 
+                </t>
+                </t>
+                <tr class="addmorepro">
+                <p t-on-click="addproducts">add product</p>
+                </tr>
+              </tbody>
+          </table> 
+        </div>
+
+          <!-- <div class="input-group" >
+                <label for="message">Message</label>
+                <textarea  style="width:100%;" id="message" name="message" rows="5" placeholder=" " required="true" />
+            </div> -->
+  
+          </div>
+        </div>
+          <div class="btn-group-row">
+            <button class="button-inventory1"  t-on-click='submitproduct_inward'  type="button">Save</button>
+            <button class="button-inventory1" type="clear">Clear</button>
+          </div>
+           
+        </form>
+    </div>
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+      </div>
+      </t>
+      <t t-else="">
+       <div class="rightdiv">
+       
+      </div>
+      </t>
+     
+    </div>
+       </div>
+    </t>
+</templates>
+
+
+ 

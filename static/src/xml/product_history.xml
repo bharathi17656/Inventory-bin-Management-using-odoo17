@@ -1,0 +1,5 @@
+<templates>
+    <t t-name="productHistory">
+        <h1>Hello Product History</h1>
+    </t>
+</templates>

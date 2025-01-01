@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="custom_stock_warehouse" model="ir.ui.view">
+            <field name="name">custom.stock.warehouse_form</field>
+            <field name="model">stock.warehouse</field>
+            <field name="inherit_id" ref="stock.view_warehouse" />
+            <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='code']" position="before">
+
+                <field name="parent_warehouse" class="w-100" />
+
+            </xpath>
+            
+            </field>
+        </record>
+
+
+        <record id="custom_stock_category" model="ir.ui.view">
+            <field name="name">custom.stock.category.form</field>
+            <field name="model">stock.storage.category</field>
+            <field name="inherit_id" ref="stock.stock_storage_category_form" />
+            <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='name']" position="before">
+
+                <field name="parent_warehouse" class="w-100" />
+
+                <field name="child_warehouse" class="w-100" />
+
+            </xpath>
+
+
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="string">Rack Name</attribute>
+            </xpath>
+        
+            
+            </field>
+        </record>
+
+        <record id="custom_stock_location" model="ir.ui.view">
+            <field name="name">custom.stock.location.tree</field>
+            <field name="model">stock.location</field>
+            <field name="inherit_id" ref="stock.view_location_tree2" />
+            <field name="arch" type="xml">
+
+
+            <xpath expr="//field[@name='complete_name']" position="attributes">
+                <attribute name="string">Complete Bin Name</attribute>
+            </xpath>
+
+           
+            
+            </field>
+        </record>
+
+        <record id="custom_stock_location_form" model="ir.ui.view">
+            <field name="name">custom.stock.location.form</field>
+            <field name="model">stock.location</field>
+            <field name="inherit_id" ref="stock.view_location_form" />
+            <field name="arch" type="xml">
+
+
+        
+            
+            <xpath expr="//field[@name='location_id']" position="after">
+
+                <field name="bin_row" class="w-100" />
+                <field name="bin_col"  class="w-100" />
+
+            </xpath>
+
+            
+            <xpath expr="//field[@name='location_id']" position="after">
+
+                <field name="order_id" class="w-100" />
+
+            </xpath>
+           
+            
+            </field>
+        </record>
+
+       
+
+
+        <record model="ir.ui.menu" id="stock.menu_storage_categoty_config">
+            <field name="name">Rack Management</field>
+        </record>
+        <record model="ir.ui.menu" id="stock.menu_action_location_form">
+            <field name="name">Bins Management</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,251 @@
+.twogrid1-customer {
+  display: grid
+;
+  grid-template-columns: 32% 1fr;
+ 
+  height: 92vh;
+  width: 93vw ;
+
+  
+}
+
+.bin-form-customer {
+  height: 79vh;
+  width: 95%;
+  position: relative;
+  left: 19px;
+  margin-top: 10px;
+  background-color: rgb(235, 235, 235);
+  border-radius: 20px;
+}
+
+
+
+
+
+
+.leftdiv1-customer{
+margin-top: 15px;
+}
+.rightdiv1-customer{
+background-color: rgb(235, 235, 235);
+margin-top: 10px;
+margin-left: 10px;
+height: 79vh;
+border-radius: 20px;
+
+}
+
+.form-container-customer  {
+padding: 20px;
+border-radius: 8px;
+
+width: 100%;
+max-width: 343px;
+margin-left: 46px;
+}
+
+.label-customer  {
+
+font-weight: bold;
+margin-left: 7px;
+}
+
+.input-customer-notrequired{
+width: 100%;
+padding: 10px;
+
+border: 1px solid #ccc;
+border-radius: 20px;
+font-size: 16px; 
+margin-bottom: 18px;
+}
+
+.input-customer {
+  width: 100%;
+padding: 10px;
+
+border: 1px solid #ccc;
+border-radius: 20px;
+font-size: 16px; 
+}
+
+
+
+
+
+
+
+/* table style */
+
+
+.table-container-customer {
+  max-width: 800px;
+  margin: 0 auto;
+  height: 46vh;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+
+.data-table-customer  {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+.data-table-customer  td {
+  text-align: left;
+  padding: 4px 15px;
+  border: 1px solid #ddd;
+}
+
+
+.data-table-customer  th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+  text-align: left;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+.data-table-customer  tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.data-table-customer  tr:hover {
+  background-color: #f1f1f1;
+}
+
+.action-btn-customer  {
+  padding: 4px 12px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #28a745;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+}
+
+.action-btn-customer :hover {
+  background-color: #218838;
+}
+
+
+/* Container */
+.input-container-customer{
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100%;
+}
+
+/* Wrapper for input and label */
+.material-textfield-customer{
+position: relative;
+display: inline-block;
+width: 100%; /* Adjust as needed */
+margin-top: 25px;
+}
+
+/* Input styles */
+.input-field-customer{
+font-size: 1rem;
+outline: none;
+border: 1px solid gray;
+border-radius: 5px;
+padding: 10px;
+width: 95%;
+color: black;
+transition: border-color 0.2s ease-out;
+}
+
+/* Input focus state */
+.input-field-customer:focus {
+border-color: rgb(4,139,255);
+}
+
+/* Label styles */
+.input-label-customer{
+position: absolute;
+font-size: 1rem;
+left: 10px; /* Adjust to match padding of input */
+top: 50%;
+transform: translateY(-50%);
+background-color: white;
+color: gray;
+padding: 0 0.3rem;
+transition: 0.2s ease-out;
+pointer-events: none; /* Prevent label from interfering with input click */
+}
+
+/* Label moves up when input is focused or has value */
+.input-field-customer:focus + .input-label-customer,
+.input-field-customer:not(:placeholder-shown) + .input-label-customer{
+top: -2px;
+left: 5px;
+font-size: 12px;
+color: rgb(4,139,255);
+font-weight: bold;
+}
+
+/* Placeholder hidden when input is focused or has value */
+.input-field-customer:focus::placeholder,
+.input-field-customer:not(:placeholder-shown)::placeholder {
+opacity: 0;
+}
+
+
+
+
+.material-textfield-customer1 {
+position: relative;
+display: block;
+width: 50%; /* Adjust as needed */
+margin-top: 10px;
+}
+.input-field-customer1 {
+font-size: 1rem;
+outline: none;
+border: 1px solid gray;
+border-radius: 5px;
+padding: 10px;
+width: 95%;
+color: gray;
+transition: border-color 0.2s ease-out;
+}
+.material-textfield-customer2 {
+position: relative;
+display: flex;
+width: 98%;
+margin-top: 10px;
+}
+
+
+
+
+.pagination-controls-customer {
+margin-top: 20px;
+display: flex;
+gap: 10px;
+float: right;
+margin-right: 45px;
+}
+
+.pagination-controls-button-customer{
+padding: 5px 15px;
+border: 1px solid #ccc;
+background-color: #007bff;
+color: white;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.pagination-controls-button-customer[disabled] {
+background-color: #ccc;
+cursor: not-allowed;
+}

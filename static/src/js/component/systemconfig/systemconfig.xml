@@ -1,0 +1,645 @@
+<templates>
+    <t t-name="SystemSettings">
+        <div class='tab'>
+            <!-- <div class="material-textfield">
+                <input
+      class="input-field"
+      type="text"
+      placeholder=""
+    />
+                <label class="input-label">Your Name</label>
+            </div> -->
+            <t t-if="!(state.itsemployee)" >
+                <button class="tab-button "   t-att-class="'tab-button ' + (state.updatepage === 'user' ? 'active-tab' : '')"  t-on-click="updateuser">User</button>
+            
+            <button class="tab-button "   t-att-class="'tab-button ' + (state.updatepage === 'vendor' ? 'active-tab' : '')" t-on-click="updatevendor">Vendor</button>
+            <button class="tab-button"  t-att-class="'tab-button ' + (state.updatepage === 'customer' ? 'active-tab' : '')"  t-on-click="updatecustomer">Customer</button>
+           
+                <button class="tab-button "   t-att-class="'tab-button ' + (state.updatepage === 'resetpassword' ? 'active-tab' : '')"   t-on-click="updateresetpassword" >Reset Password</button>
+            </t>
+        </div>
+        <div t-att-class="state.popupmode ? 'twogrid1-user main-popup-hidden' : 'twogrid1-user' ">
+            <div class="bin-form-user">
+                <t t-if="state.updatepage == 'user' ">
+                    <div class="form-container-user ">
+                        <form id="dropdownForm" >
+                            <div class="material-textfield-user">
+                                <input type="text" id="date" name="name" value='' t-on-change='onchangeuserdata' placeholder=" " required="true"  class="input-field-user "/>
+                                <label for="date" class="input-label-user required"> Name </label>
+                            </div>
+                            <t t-if="state.user_error.error_name != null ">
+                                <p class="error-message-rack" style="position:absolute;top:90px; " t-esc="state.user_error.error_name" />
+                            </t>
+                            <div class="material-textfield-user">
+                                <input type="text" id="sonumber" class="input-field-user" name="email" value='' t-on-change='onchangeuserdata'  placeholder=" "   required="true" />
+                                <label for="vendorname" class="input-label-user required">User ID </label>
+                            </div>
+                           
+                           <div class="select-type-user">
+
+
+                            <t t-if="state.userdata.type != 'emp'" >
+                            <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="admin" t-on-click="onchangeuserdata" value="" id="flexCheckDefault" />
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Admin
+                                    </label>
+                                    </div>
+
+                            </t>
+                             <t t-if="state.userdata.type != 'admin'" >
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" name="emp" t-on-click="onchangeuserdata" id="flexCheckChecked"  />
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        Employee
+                                    </label>
+                                </div>
+                                </t>
+                            </div>
+                            <div class="material-textfield-user ">
+                                <input type="password" class="input-field-user"  id="sonumber" name="password" value='' t-on-change='onchangeuserdata' placeholder="" required="true" maxlength="8"  />
+                                <label  class="input-label-user required1 " for="sonumber">Password</label>
+                            </div>
+                            <t t-if="state.user_error.error_pass != null ">
+                                <p class="error-message-rack " style="position:absolute;top:230px; " t-esc="state.user_error.error_pass" />
+                            </t>
+                            <div class="material-textfield-user ">
+                                <input type="password" class="input-field-user" id="sonumber" name="confirmpassword" value='' t-on-change='onchangeuserdata' placeholder=" "  required="true" maxlength="8"  />
+                                <label  class="input-label-user required1 " for="sonumber">Confirm Password</label>
+                            </div>
+                            <t t-if="state.user_error.error_confirm_pass != null ">
+                                <p class="error-message-rack " t-esc="state.user_error.error_confirm_pass" />
+                            </t>
+                        </form>
+                        <div  class="div-sys-button">
+                            <button class="button-inventory1"  t-on-click='submituser' style="width:90px;"  type="button">Save</button>
+                            <button class="button-inventory1"  t-on-click='clearuser' style="background:red !important;width:90px;" type="clear">Clear</button>
+                        </div>
+                    </div>
+                </t>
+                <!-- vendor -->
+                <t t-if="state.updatepage == 'vendor' ">
+                    <div class="form-container-vendor ">
+                        <form id="dropdownForm" >
+                            <div class="material-textfield-vendor ">
+                                <input type="text" id="date" value="" name="name"  placeholder=" "  t-on-change='onchangevendordata' class="input-field-vendor"/>
+                                <label for="date" class="input-label-vendor required">Company/Individual Name </label>
+                                <t t-if="state.vendor_error.error_name != null ">
+                                    <p class="error-message-rack "   style="position:absolute;" t-esc="state.vendor_error.error_name" />
+                                </t>
+                            </div>
+                            <div class="material-textfield-vendor">
+                                <input type="text" id="recievedby" value="" name="mobile" placeholder=" " t-on-change='onchangevendordata' class="input-field-vendor"  />
+                                <label for="recievelocation " class="input-label-vendor required">Mobile </label>
+                                <t t-if="state.vendor_error.error_number != null ">
+                                    <p class="error-message-rack " style="position:absolute;" t-esc="state.vendor_error.error_number" />
+                                </t>
+                            </div>
+                            <div class="material-textfield-vendor">
+                                <input type="text" id="sonumber" class="input-field-vendor" name="email"  value="" placeholder=" " t-on-change='onchangevendordata'  required="true" />
+                                <label for="vendorname" class="input-label-vendor">Email </label>
+                            </div>
+                            <div class="material-textfield-vendor">
+                                <input type="text" id="date" name="cname" value='' t-on-change='onchangevendordata' placeholder=" " required="true"  class="input-field-vendor"/>
+                                <label for="date" class="input-label-vendor required ">Contact Person Name </label>
+                                <t t-if="state.vendor_error.error_cname != null ">
+                                    <p class="error-message-rack " style="position:absolute;"  t-esc="state.vendor_error.error_cname" />
+                                </t>
+                            </div>
+                            <div class="material-textfield-vendor">
+                                <input type="text" id="sonumber" class="input-field-vendor" name="address"  value="" placeholder="Address1 " t-on-change='onchangevendordata'   required="true" />
+                                <label  class="input-label-vendor" for="sonumber">Address</label>
+                                <t t-if="state.vendor_error.error_address != null ">
+                                    <p class="error-message-rack "  style="position:absolute;top:" t-esc="state.vendor_error.error_address" />
+                                </t>
+                            </div>
+                            <div class=" material-textfield-vendor2">
+                                <div class="material-textfield-vendor1">
+                                    <input type="text" id="sonumber" class="input-field-vendor" name="city"  value="Coimbatore" placeholder="City " t-on-change='onchangevendordata'   required="true" />
+                                    <label  class="input-label-vendor" for="sonumber">City</label>
+                                </div>
+                                <div class="material-textfield-vendor1">
+                                    <input type="text" id="sonumber" class="input-field-vendor" name="state"  value="Tamil Nadu" placeholder="State " t-on-change='onchangevendordata'   required="true" />
+                                    <label  class="input-label-vendor" for="sonumber">State</label>
+                                </div>
+                            </div>
+                            <div class="material-textfield-vendor">
+                                <input type="text" id="sonumber" class="input-field-vendor" name="pincode"  value="" placeholder="Pincode " t-on-change='onchangevendordata'   required="true" />
+                                <label  class="input-label-vendor" for="sonumber">Pincode</label>
+                            </div>
+                        </form>
+                        <div class="div-sys-button" style="margin-top: 0% !important;" >
+                            <button class="button-inventory1"  t-on-click='submitvendor' style="width:90px;"  type="button">Save</button>
+                            <button class="button-inventory1" t-on-click='clearuser' style="background:red !important;width:90px;" type="clear">Clear</button>
+                        </div>
+                    </div>
+                </t>
+                <t t-if="state.updatepage == 'customer' ">
+                    <div class="form-container-customer ">
+                        <form id="dropdownForm" >
+                            <div class="material-textfield-customer">
+                                <input type="text" id="date" value="" name="name"  placeholder=" "  t-on-change='onchangecustomerdata' class="input-field-customer"/>
+                                <label for="date" class="input-label-customer required">Name </label>
+                            </div>
+                            <div class="material-textfield-customer">
+                                <input type="text" id="recievedby" value="" name="mobile" placeholder=" " t-on-change='onchangecustomerdata' class="input-field-customer"  />
+                                <label for="recievelocation" class="input-label-customer required">Mobile </label>
+                            </div>
+                            <div class="material-textfield-customer">
+                                <input type="text" id="sonumber" class="input-field-customer" name="email"  value="" placeholder=" " t-on-change='onchangecustomerdata'  required="true" />
+                                <label for="vendorname" class="input-label-customer ">Email </label>
+                            </div>
+                            <div class="material-textfield-customer">
+                                <input type="text" id="sonumber" class="input-field-customer" name="address"  value="" placeholder=" " t-on-change='onchangecustomerdata'   required="true" />
+                                <label  class="input-label-customer" for="sonumber">Address</label>
+                            </div>
+                            <div class=" material-textfield-customer2">
+                                <div class="material-textfield-customer1">
+                                    <input type="text" id="sonumber" class="input-field-customer" name="city"  value="Coimbatore" placeholder="City " t-on-change='onchangevendordata'   required="true" />
+                                    <label  class="input-label-customer" for="sonumber">City</label>
+                                </div>
+                                <div class="material-textfield-customer1">
+                                    <input type="text" id="sonumber" class="input-field-customer" name="state"  value="Tamil Nadu" placeholder="State " t-on-change='onchangevendordata'   required="true" />
+                                    <label  class="input-label-customer" for="sonumber">State</label>
+                                </div>
+                            </div>
+                            <div class="material-textfield-customer">
+                                <input type="text" id="sonumber" class="input-field-customer" name="pincode"  value="" placeholder="Pincode " t-on-change='onchangevendordata'   required="true" />
+                                <label  class="input-label-customer" for="sonumber">Pincode</label>
+                            </div>
+                        </form>
+                        <div  class="div-sys-button-customer">
+                            <button class="button-inventory1"  t-on-click='submitcustomer' style="width:90px;" type="button">Save</button>
+                            <button class="button-inventory1" t-on-click='clearuser' style="background:red !important;width:90px;" type="clear">Clear</button>
+                        </div>
+                    </div>
+                </t>
+                <t t-if="state.updatepage == 'resetpassword' ">
+                    <h1 style="margin-left: 105px; padding: 16px;font-weight: 500;">Reset Password</h1>
+                    <div class="form-container-outward ">
+                        <form id="dropdownForm6" >
+                            <div class="material-textfield-password">
+                                <select class="input-field-password select-password"  name="selectuser"  t-on-change="selecteduser" disabled='true' >
+                               
+                                    <t t-foreach="state.userlist" t-as="user" t-key="user.id">
+                                        <option t-att-value="user.id" t-esc="user.name"/>
+                                    </t>
+                                </select>
+                                <label for="recievelocation" class="input-label-password"> User </label>
+                            </div>
+                            <div class="material-textfield-password">
+                                <input type="password" id="recievedby" value="" name="password" placeholder=" " t-on-change='onchangeresetpassword' class="input-field-password" maxlength="8"   />
+                                <label for="recievelocation" class="input-label-password">Password </label>
+                            </div>
+                            <div class="material-textfield-password">
+                                <input type="password" id="sonumber" class="input-field-password" name="confirmpassword"  value="" placeholder=" " t-on-change='onchangeresetpassword'  required="true" maxlength="8" />
+                                <label for="vendorname" class="input-label-password">Confirm Password </label>
+                            </div>
+                        </form>
+                        <div  class="div-sys-button-password">
+                            <button class="button-inventory1" t-on-click='resetpassword' style="width:90px;" type="button">Save</button>
+                            <button class="button-inventory1" t-on-click='clearuser' style="background:red !important;width:90px;" type="clear">Clear</button>
+                        </div>
+                    </div>
+                </t>
+            </div>
+            <div class="rightdiv1-user">
+                <t t-if="state.updatepage == 'user' ">
+                   
+                
+                       
+                        <div class="table-container-user">
+                               <div class="material-textfield-search">
+                                    <input type="text" id="sonumber" class="input-field-customer" name="state" placeholder="Search..."  value=""   t-on-keyup='globalsearch' />
+                                    <label  class="input-label-customer" for="sonumber">Search</label>
+                                </div>
+                                 <t t-if="state.filteredTableData.length > 0">
+
+                            <div class="data-table-wrapper">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr class="table-row table-header">
+                                            <th class="column-sn">S.No</th>
+                                            <th class="column-name">Name</th>
+                                            <th class="column-email">User Name</th>
+                                            <th class="column-action">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="serial_number" t-value="0" />
+                                        <t t-foreach="state.filteredTableData"  t-as="user" t-key="user.id">
+                                            <tr class="table-row">
+                                                <td class="column-name">
+                                                    <t t-set="serial_number" t-value="serial_number + 1" />
+                                                    <t t-esc="serial_number" />
+                                                </td>
+                                                <td class="column-name">
+                                                    <t t-esc="user.name" />
+                                                </td>
+                                                <td class="column-name">
+                                                    <t t-esc="user.email" />
+                                                </td>
+                                                <td class="column-name">
+                                                    <a class="action-btn "  t-on-click="()=>updateusermodel(user.id)">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20" height="20" fill="green">
+                                                            <path d="M18.656.93,6.464,13.122A4.966,4.966,0,0,0,5,16.657V18a1,1,0,0,0,1,1H7.343a4.966,4.966,0,0,0,3.535-1.464L23.07,5.344a3.125,3.125,0,0,0,0-4.414A3.194,3.194,0,0,0,18.656.93Zm3,3L9.464,16.122A3.02,3.02,0,0,1,7.343,17H7v-.343a3.02,3.02,0,0,1,.878-2.121L20.07,2.344a1.148,1.148,0,0,1,1.586,0A1.123,1.123,0,0,1,21.656,3.93Z"/>
+                                                            <path d="M23,8.979a1,1,0,0,0-1,1V15H18a3,3,0,0,0-3,3v4H5a3,3,0,0,1-3-3V5A3,3,0,0,1,5,2h9.042a1,1,0,0,0,0-2H5A5.006,5.006,0,0,0,0,5V19a5.006,5.006,0,0,0,5,5H16.343a4.968,4.968,0,0,0,3.536-1.464l2.656-2.658A4.968,4.968,0,0,0,24,16.343V9.979A1,1,0,0,0,23,8.979ZM18.465,21.122a2.975,2.975,0,0,1-1.465.8V18a1,1,0,0,1,1-1h3.925a3.016,3.016,0,0,1-.8,1.464Z"/>
+                                                        </svg>
+                                                    </a>
+                                                    <a class="reset-btn"  t-on-click="()=>updateresetpassword(user.id)">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="20" height="20" fill="red">
+                                                            <path d="m23,17.091v5.909l-2.53-2.53c-2.232,2.228-5.267,3.53-8.47,3.53C5.383,24,0,18.617,0,12h3c0,4.962,4.037,9,9,9,2.402,0,4.678-.977,6.352-2.648l-2.352-2.352h5.909c.602,0,1.091.488,1.091,1.091ZM2.091,8h5.909l-2.352-2.352c1.675-1.671,3.95-2.648,6.352-2.648,4.963,0,9,4.038,9,9h3C24,5.383,18.617,0,12,0c-3.203,0-6.237,1.302-8.47,3.53L1,1v5.909c0,.603.488,1.091,1.091,1.091Z"/>
+                                                        </svg>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                     
+                         </t>
+                    <t t-else="">
+                        <div class="alert alert-info mt-3" role="alert">
+                                No record found for the given filter criteria.
+                            </div>
+                    </t>
+                       </div>
+                        <div>
+                            <!-- Pagination Controls -->
+                            <div class="pagination-controls-user">
+                                <button 
+                    class=" pagination-controls-button-user btn btn-primary"   
+            
+            t-on-click="() => changePage(state.currentPage - 1)" 
+            t-att-disabled="state.currentPage === 1 || state.globaldata.length == 0">
+            Previous
+        </button>
+                                <span>Page
+                                    <t t-esc="state.currentPage"/> of
+                                    <t t-esc="state.totalPages"/>
+                                </span>
+                                <button 
+            class="    pagination-controls-button-user btn btn-primary" 
+            t-on-click="() => changePage(state.currentPage + 1)" 
+            t-att-disabled="state.currentPage === state.totalPages">
+            Next
+        </button>
+                            </div>
+                        </div>
+                       
+                   
+                </t>
+                <!-- vendor table -->
+                <t t-if="state.updatepage == 'vendor' ">
+                  
+                        <div class="table-container-user">
+                            <div class="material-textfield-search">
+                                    <input type="text" id="sonumber" class="input-field-customer" name="state" placeholder="Search..."  value=""  t-on-keyup='globalsearch' />
+                                    <label  class="input-label-customer" for="sonumber">Search</label>
+                                </div>
+                                  <t t-if="state.filteredTableData.length > 0">
+                            <div class="data-table-wrapper">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr class="table-row table-header">
+                                            <th class="column-sno">S.No</th>
+                                            <th class="column-name">Name</th>
+                                            <th class="column-email">Mobile</th>
+                                            <th class="column-email">Contact Person Name</th>
+                                            <th class="column-action">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="serial_number" t-value="0" />
+                                        <t t-foreach="state.filteredTableData"  t-as="user" t-key="user.id">
+                                            <tr class="table-row">
+                                                <td class="column-name">
+                                                    <t t-set="serial_number" t-value="serial_number + 1" />
+                                                    <t t-esc="serial_number" />
+                                                </td>
+                                                <td class="column-name">
+                                                    <t t-esc="user.name" />
+                                                </td>
+                                                <td class="column-name">
+                                                    <t t-esc="user.number" />
+                                                </td>
+                                                 <td class="column-name">
+                                                    <t t-esc="user.cname" />
+                                                </td>
+                                                <td class="column-name">
+                                                    <a class="action-btn ">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20" height="20" fill="green"  t-on-click="()=>updatevendormodel(user.id)">
+                                                            <path d="M18.656.93,6.464,13.122A4.966,4.966,0,0,0,5,16.657V18a1,1,0,0,0,1,1H7.343a4.966,4.966,0,0,0,3.535-1.464L23.07,5.344a3.125,3.125,0,0,0,0-4.414A3.194,3.194,0,0,0,18.656.93Zm3,3L9.464,16.122A3.02,3.02,0,0,1,7.343,17H7v-.343a3.02,3.02,0,0,1,.878-2.121L20.07,2.344a1.148,1.148,0,0,1,1.586,0A1.123,1.123,0,0,1,21.656,3.93Z"/>
+                                                            <path d="M23,8.979a1,1,0,0,0-1,1V15H18a3,3,0,0,0-3,3v4H5a3,3,0,0,1-3-3V5A3,3,0,0,1,5,2h9.042a1,1,0,0,0,0-2H5A5.006,5.006,0,0,0,0,5V19a5.006,5.006,0,0,0,5,5H16.343a4.968,4.968,0,0,0,3.536-1.464l2.656-2.658A4.968,4.968,0,0,0,24,16.343V9.979A1,1,0,0,0,23,8.979ZM18.465,21.122a2.975,2.975,0,0,1-1.465.8V18a1,1,0,0,1,1-1h3.925a3.016,3.016,0,0,1-.8,1.464Z"/>
+                                                        </svg>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                              </t>
+                               <t t-else="">
+                        <div class="alert alert-info mt-3" role="alert">
+                                No record found for the given filter criteria.
+                            </div>
+                    </t>
+                        </div>
+                        <div>
+                            <!-- Pagination Controls -->
+                            <div class="pagination-controls-vendor">
+                                <button 
+                    class=" pagination-controls-button-vendor btn btn-primary"   
+            
+            t-on-click="() => changePage(state.currentPage - 1)" 
+            t-att-disabled="state.currentPage === 1 || state.globaldata.length == 0">
+            Previous
+        </button>
+                                <span>Page
+                                    <t t-esc="state.currentPage"/> of
+                                    <t t-esc="state.totalPages"/>
+                                </span>
+                                <button 
+            class="    pagination-controls-button-vendor btn btn-primary" 
+            t-on-click="() => changePage(state.currentPage + 1)" 
+            t-att-disabled="state.currentPage === state.totalPages">
+            Next
+        </button>
+                            </div>
+                        </div>
+                  
+                    
+                </t>
+                <!-- customer table -->
+                <t t-if="state.updatepage == 'customer' ">
+                    <t t-if="state.filteredTableData.length > 0">
+                        <div class="table-container-user">
+                                <div class="material-textfield-search">
+                                    <input type="text" id="sonumber" class="input-field-customer" name="state" placeholder="Search..."  value=""   t-on-keyup='globalsearch' />
+                                    <label  class="input-label-customer" for="sonumber">Search</label>
+                                </div>
+                            <div class="data-table-wrapper">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr class="table-row table-header">
+                                            <th class="column">S.No</th>
+                                            <th class="column-name">Name</th>
+                                            <th class="column-email">Mobile</th>
+                                            <th class="column-action">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="serial_number" t-value="0" />
+                                        <t t-foreach="state.filteredTableData"  t-as="user" t-key="user.id">
+                                            <tr class="table-row">
+                                                <td class="column-name">
+                                                    <t t-set="serial_number" t-value="serial_number + 1" />
+                                                    <t t-esc="serial_number" />
+                                                </td>
+                                                <td class="column-name">
+                                                    <t t-esc="user.name" />
+                                                </td>
+                                                <td class="column-name">
+                                                    <t t-esc="user.number" />
+                                                </td>
+                                                <td class="column-name">
+                                                    <a class="action-btn " t-on-click="()=>updatecustomermodel(user.id)">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20" height="20" fill="green" >
+                                                            <path d="M18.656.93,6.464,13.122A4.966,4.966,0,0,0,5,16.657V18a1,1,0,0,0,1,1H7.343a4.966,4.966,0,0,0,3.535-1.464L23.07,5.344a3.125,3.125,0,0,0,0-4.414A3.194,3.194,0,0,0,18.656.93Zm3,3L9.464,16.122A3.02,3.02,0,0,1,7.343,17H7v-.343a3.02,3.02,0,0,1,.878-2.121L20.07,2.344a1.148,1.148,0,0,1,1.586,0A1.123,1.123,0,0,1,21.656,3.93Z"/>
+                                                            <path d="M23,8.979a1,1,0,0,0-1,1V15H18a3,3,0,0,0-3,3v4H5a3,3,0,0,1-3-3V5A3,3,0,0,1,5,2h9.042a1,1,0,0,0,0-2H5A5.006,5.006,0,0,0,0,5V19a5.006,5.006,0,0,0,5,5H16.343a4.968,4.968,0,0,0,3.536-1.464l2.656-2.658A4.968,4.968,0,0,0,24,16.343V9.979A1,1,0,0,0,23,8.979ZM18.465,21.122a2.975,2.975,0,0,1-1.465.8V18a1,1,0,0,1,1-1h3.925a3.016,3.016,0,0,1-.8,1.464Z"/>
+                                                        </svg>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                             </div>
+                                 </t>
+                                 <t t-else="">
+                        <div class="alert alert-info mt-3" role="alert">
+                                No record found for the given filter criteria.
+                            </div>
+                    </t>
+                            
+                       
+                        <div>
+                            <!-- Pagination Controls -->
+                            <div class="pagination-controls-customer">
+                                <button 
+                    class=" pagination-controls-button-customer btn btn-primary"   
+            
+            t-on-click="() => changePage(state.currentPage - 1)" 
+             t-att-disabled="state.currentPage === 1 || state.globaldata.length == 0">
+            Previous
+        </button>
+                                <span>Page
+                                    <t t-esc="state.currentPage"/> of
+                                    <t t-esc="state.totalPages"/>
+                                </span>
+                                <button 
+            class="    pagination-controls-button-customer btn btn-primary" 
+            t-on-click="() => changePage(state.currentPage + 1)" 
+            t-att-disabled="state.currentPage === state.totalPages" >
+            Next
+        </button>
+                            </div>
+                        </div>
+                        
+                
+                    
+                </t>
+            </div>
+
+
+            
+        </div>
+
+
+        <t t-if="state.popupmode">
+ 
+        <div class="popup-container">
+         <t t-if="state.updatepage == 'vendor' ">
+         
+                    <div class="popup-form-page">
+                <div class="topheader-exit"> <h1>Vendor Details</h1>  <p class="exiticon" t-on-click="exitpopup"><svg width="24px" height="24px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <title>cancel</title>
+                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g id="work-case" fill="#000000" transform="translate(91.520000, 91.520000)">
+                                        <polygon id="Close" points="328.96 30.2933333 298.666667 1.42108547e-14 164.48 134.4 30.2933333 1.42108547e-14 1.42108547e-14 30.2933333 134.4 164.48 1.42108547e-14 298.666667 30.2933333 328.96 164.48 194.56 298.666667 328.96 328.96 298.666667 194.56 164.48">
+
+                            </polygon>
+                                    </g>
+                                </g>
+                            </svg>
+                        </p></div>
+                      
+                       <form id="dropdownForm1">
+                            <div class="material-textfield-vendor">
+                                <input type="text" id="vendorName" value="" name="name" placeholder=" " t-on-change='onchangevendordata' class="input-field-vendor" />
+                                <label for="vendorName" class="input-label-vendor required">Company/Individual Name</label>
+                                <t t-if="state.vendor_error.error_name != null">
+                                    <p class="error-message-rack" style="position:absolute;" t-esc="state.vendor_error.error_name"></p>
+                                </t>
+                            </div>
+                            <div class="material-textfield-vendor">
+                                <input type="text" id="vendorMobile" value="" name="mobile" placeholder=" " t-on-change='onchangevendordata' class="input-field-vendor" />
+                                <label for="vendorMobile" class="input-label-vendor required">Mobile</label>
+                                <t t-if="state.vendor_error.error_number != null">
+                                    <p class="error-message-rack" style="position:absolute;" t-esc="state.vendor_error.error_number"></p>
+                                </t>
+                            </div>
+                            <div class="material-textfield-vendor">
+                                <input type="text" id="vendorCName" name="cname" value="" t-on-change='onchangevendordata' placeholder=" " required="true" class="input-field-vendor" />
+                                <label for="vendorCName" class="input-label-vendor required">Contact Person Name</label>
+                                <t t-if="state.vendor_error.error_cname != null">
+                                    <p class="error-message-rack" style="position:absolute;" t-esc="state.vendor_error.error_cname"></p>
+                                </t>
+                            </div>
+                            <div class="material-textfield-vendor">
+                                <input type="text" id="vendorAddress" class="input-field-vendor" name="address" value="" placeholder="Address" t-on-change='onchangevendordata' required="true" />
+                                <label for="vendorAddress" class="input-label-vendor">Address</label>
+                                <t t-if="state.vendor_error.error_address != null">
+                                    <p class="error-message-rack" style="position:absolute;" t-esc="state.vendor_error.error_address"></p>
+                                </t>
+                            </div>
+                            <div class="material-textfield-vendor2">
+                                <div class="material-textfield-vendor1">
+                                    <input type="text" id="vendorCity" class="input-field-vendor" name="city" value="Coimbatore" placeholder="City" t-on-change='onchangevendordata' required="true" />
+                                    <label for="vendorCity" class="input-label-vendor">City</label>
+                                </div>
+                                <div class="material-textfield-vendor1">
+                                    <input type="text" id="vendorState" class="input-field-vendor" name="state" value="Tamil Nadu" placeholder="State" t-on-change='onchangevendordata' required="true" />
+                                    <label for="vendorState" class="input-label-vendor">State</label>
+                                </div>
+                            </div>
+                            <div class="material-textfield-vendor">
+                                <input type="text" id="vendorPincode" class="input-field-vendor" name="pincode" value="" placeholder="Pincode" t-on-change='onchangevendordata' required="true" />
+                                <label for="vendorPincode" class="input-label-vendor">Pincode</label>
+                            </div>
+                        </form>
+                        <div class="div-sys-button" style="margin-top: 0% !important;">
+                            <button class="button-inventory1" t-on-click='updateoldvendor' style="width:90px;" type="button">Save</button>
+                            <button class="button-inventory1" t-on-click='clearupdatevendor' style="background:red !important;width:90px;" type="clear">Clear</button>
+                        </div>
+
+                    </div>
+                </t>
+
+
+
+                 <t t-if="state.updatepage == 'customer' ">
+                    
+                    <div class="popup-form-page">
+                    <div class="topheader-exit"> <h1>Customer Details</h1>  <p class="exiticon1" t-on-click="exitpopup"><svg width="24px" height="24px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <title>cancel</title>
+                                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g id="work-case" fill="#000000" transform="translate(91.520000, 91.520000)">
+                                            <polygon id="Close" points="328.96 30.2933333 298.666667 1.42108547e-14 164.48 134.4 30.2933333 1.42108547e-14 1.42108547e-14 30.2933333 134.4 164.48 1.42108547e-14 298.666667 30.2933333 328.96 164.48 194.56 298.666667 328.96 328.96 298.666667 194.56 164.48">
+
+                                </polygon>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </p></div>
+                        
+                            <form id="dropdownForm2">
+                                <div class="material-textfield-customer">
+                                    <input type="text" id="customerName" value="" name="name" placeholder=" " t-on-change='onchangecustomerdata' class="input-field-customer" />
+                                    <label for="customerName" class="input-label-customer required">Name</label>
+                                </div>
+                                <div class="material-textfield-customer">
+                                    <input type="text" id="customerMobile" value="" name="mobile" placeholder=" " t-on-change='onchangecustomerdata' class="input-field-customer" />
+                                    <label for="customerMobile" class="input-label-customer required">Mobile</label>
+                                </div>
+                                <div class="material-textfield-customer">
+                                    <input type="text" id="customerEmail" class="input-field-customer" name="email" value="" placeholder=" " t-on-change='onchangecustomerdata' required="true" />
+                                    <label for="customerEmail" class="input-label-customer">Email</label>
+                                </div>
+                                <div class="material-textfield-customer">
+                                    <input type="text" id="customerAddress" class="input-field-customer" name="address" value="" placeholder=" " t-on-change='onchangecustomerdata' required="true" />
+                                    <label for="customerAddress" class="input-label-customer">Address</label>
+                                </div>
+                                <div class="material-textfield-customer2">
+                                    <div class="material-textfield-customer1">
+                                        <input type="text" id="customerCity" class="input-field-customer" name="city" value="Coimbatore" placeholder="City" t-on-change='onchangecustomerdata' required="true" />
+                                        <label for="customerCity" class="input-label-customer">City</label>
+                                    </div>
+                                    <div class="material-textfield-customer1">
+                                        <input type="text" id="customerState" class="input-field-customer" name="state" value="Tamil Nadu" placeholder="State" t-on-change='onchangecustomerdata' required="true" />
+                                        <label for="customerState" class="input-label-customer">State</label>
+                                    </div>
+                                </div>
+                                <div class="material-textfield-customer">
+                                    <input type="text" id="customerPincode" class="input-field-customer" name="pincode" value="" placeholder="Pincode" t-on-change='onchangecustomerdata' required="true" />
+                                    <label for="customerPincode" class="input-label-customer">Pincode</label>
+                                </div>
+                            </form>
+                            <div class="div-sys-button-customer">
+                                <button class="button-inventory1" t-on-click='updateoldcustomer' style="width:90px;" type="button">Save</button>
+                                <button class="button-inventory1" t-on-click='clearupdatecustomer' style="background:red !important;width:90px;" type="clear">Clear</button>
+                            </div>
+
+                    </div>
+                </t>
+
+
+                <t t-if="state.updatepage == 'user' ">
+                    <div class="popup-form-page" style="padding: 11px 20px 11px 20px ! important;height: 41vh  !important; position: relative; top: 98px;">
+                    <div class="topheader-exit"> <h1>User Details</h1>  <p class="exiticon" t-on-click="exitpopup"><svg width="24px" height="24px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <title>cancel</title>
+                                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g id="work-case" fill="#000000" transform="translate(91.520000, 91.520000)">
+                                            <polygon id="Close" points="328.96 30.2933333 298.666667 1.42108547e-14 164.48 134.4 30.2933333 1.42108547e-14 1.42108547e-14 30.2933333 134.4 164.48 1.42108547e-14 298.666667 30.2933333 328.96 164.48 194.56 298.666667 328.96 328.96 298.666667 194.56 164.48">
+
+                                </polygon>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </p></div>
+                        
+                            <form id="dropdownForm3" >
+                            <div class="material-textfield-user">
+                                <input type="text" id="date" name="name" value='' t-on-change='onchangeuserdata' placeholder=" " required="true"  class="input-field-user "/>
+                                <label for="date" class="input-label-user required"> Name </label>
+                            </div>
+                            <t t-if="state.user_error.error_name != null ">
+                                <p class="error-message-rack" style="position:absolute;top:90px; " t-esc="state.user_error.error_name" />
+                            </t>
+                            <div class="material-textfield-user">
+                                <input type="text" id="sonumber" class="input-field-user" name="email" value='' t-on-change='onchangeuserdata'  placeholder=" "   required="true" />
+                                <label for="vendorname" class="input-label-user required">User ID </label>
+                            </div>
+                            <t t-if="state.user_error.error_user_name != null ">
+                                <p class="error-message-rack " style="position:absolute;top:160px; " t-esc="state.user_error.error_user_name" />
+                            </t>
+                    
+                           
+                        </form>
+                        <div  class="div-sys-button">
+                            <button class="button-inventory1"  t-on-click='updateolduser' style="width:90px;"  type="button">Save</button>
+                            <button class="button-inventory1"  t-on-click='clearolduser' style="background:red !important;width:90px;" type="clear">Clear</button>
+                        </div>
+                    </div>
+                </t>
+
+
+
+                
+                <t t-if="state.warning">
+                    <div  id="warning_popup" class="popup-form-page" style="padding: 11px 20px 11px 20px ! important;height: 13vh !important;position: relative;bottom: 3px;left: 132px; ">
+                                <p>Warning: Are you sure you want to clear all data?</p>
+                        <div  class="div-sys-button1" style="display: flex;padding: 1px;gap: 8px;justify-content: center;">
+                            <button class="button-inventory2"  t-on-click='clearrecordform' style="width:90px;"  type="button">Yes</button>
+                            <button class="button-inventory2"  t-on-click='exitwarningpopup' style="background:red !important;width:90px;" type="clear">No</button>
+                        </div>
+                    </div>
+                </t>
+              
+        </div>
+    </t>
+    </t>
+</templates>

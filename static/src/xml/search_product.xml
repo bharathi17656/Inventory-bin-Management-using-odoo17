@@ -1,0 +1,135 @@
+<templates>
+    <t t-name="search_product">
+        <div class="top-grid">
+            <div class="flex-div">
+                <div style="display: flex; flex-wrap: nowrap;background-color:rgb(235, 235, 235);">
+                    <div class="flex-items">
+                        <div>
+                            <label class="other-label">From</label>
+                            <input type="date" class="date-input"   id="from_date" name="from_date"  t-att-value="state.from_date.split(' ')[0]"  t-on-change="onFilterChange" />
+                        </div>
+                    </div>
+                    <div class="flex-items">
+                        <div>
+                            <label class="other-label" for="search"> To</label>
+                            <input type="date" class="date-input" id="to_date" name="to_date"  t-att-value="state.to_date.split(' ')[0]"  t-on-change="onFilterChange" />
+                        </div>
+                    </div>
+                    <div class="flex-items">
+                        <label class="other-label"> Product </label>
+                        <select id="product" name="product" class="other-input" t-on-change="onFilterChange">
+                            <option value="">All Product</option>
+                            <t t-if="state.product_list.length > 0">
+                                <t t-foreach="state.product_list" t-as="product" t-key="product.product_id">
+                                    <option t-att-value="product.product_id" t-esc="product.product_name['en_US']"></option>
+                                </t>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="flex-items">
+                        <label class="other-label"> Vendor </label>
+                        <select id="vendor" name="vendor" class="other-input" t-on-change="onFilterChange">
+                            <option value="">All Vendor</option>
+                            <t t-if="state.vendor_list.length > 0">
+                                <t t-foreach="state.vendor_list" t-as="vendor" t-key="vendor.id">
+                                    <option t-att-value="vendor.id" t-esc="vendor.name"></option>
+                                </t>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="flex-items">
+                        <label class="other-label"> Bin </label>
+                        <select id="bin" name="bin" class="other-input"  t-on-change="onFilterChange">
+                            <option value="">All Bin</option>
+                            <t t-if="state.bin_location_list.length > 0">
+                                <t t-foreach="state.bin_location_list" t-as="bin" t-key="bin.location_id">
+                                    <option t-att-value="bin.id" t-esc="bin.location_name"></option>
+                                </t>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="flex-items">
+                    <p class="export-btn-inventory" t-on-click="exportdatatoexcel">Export</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <t t-if="state.filteredTableData.length > 0">
+            <div class="stock-record-container">
+                <div class="stock-record-content">
+                    <table class="stock-table">
+                        <thead>
+                            <tr>
+                                <th class="stock-date-header">S.No</th>
+                                <th class="stock-date-header">Date</th>
+                                <th class="stock-product-header">Product Name</th>
+                                <th class="stock-vendor-header">Vendor Name</th>
+                                <th class="stock-bin-header">Bin</th>
+                                <th class="stock-received-header">Received By</th>
+                                <th class="stock-qty-header">Qty</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <t t-set="serial_number" t-value="0" />
+                            <t t-foreach="state.filteredTableData" t-as="move" t-key="move.move_reference">
+                                <tr class="stock-row">
+                                     <td class="stock-date">
+                                      <t t-set="serial_number" t-value="serial_number + 1" />
+                                        <t t-esc="serial_number" />
+                                                    
+                                    </td>
+                                    <td class="stock-date">
+                                        <t t-esc="move.move_date" />
+                                    </td>
+                                    <td class="stock-product">
+                                        <t t-esc="move.product_name ? move.product_name['en_US'] : 'Unknown'" />
+                                    </td>
+                                    <td class="stock-vendor">
+                                        <t t-esc="move.from_partner1 || 'Unknown'" />
+                                    </td>
+                                    <td class="stock-bin">
+                                        <t t-esc="move.to_location || 'Unknown'" />
+                                    </td>
+                                    <td class="stock-received">
+                                        <t t-esc="move.received_by || 'Unknown'" />
+                                    </td>
+                                    <td class="stock-qty">
+                                        <t t-esc="move.qty_in" />
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <!-- Pagination Controls -->
+                <div class="pagination-controls">
+                    <button
+                    class="btn btn-primary"
+                    t-on-click="() => changePage(state.currentPage - 1)"
+                    t-att-disabled="state.currentPage === 1"
+                  >
+                    Previous
+                  </button>
+                    <span>Page
+                        <t t-esc="state.currentPage"/> of
+                        <t t-esc="state.totalPages"/>
+                    </span>
+                    <button
+                    class="btn btn-primary"
+                    t-on-click="() => changePage(state.currentPage + 1)"
+                    t-att-disabled="state.currentPage === state.totalPages"
+                >
+                    Next
+                </button>
+                </div>
+            </div>
+        </t>
+        <t t-else="">
+            <div class="alert alert-info mt-3" role="alert">
+            No record found for the given Filter criteria.
+    </div>
+        </t>
+    </t>
+</templates>

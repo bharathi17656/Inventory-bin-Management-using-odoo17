@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+  <t t-name="PurchaseInventory">
+    <div class="twogrid1-inward">
+      <div class="bin-form-inward ">
+        <div class="form-container-inward ">
+          <form id="dropdownForm" >
+            <div class="material-textfield-inward">
+              <input type="text" id="date" name="date" t-att-value="state.today" placeholder=" " required="true" readonly="true" class="input-field-inward"/>
+              <label for="date" class="input-label-inward ">Date </label>
+            </div>
+            <div class="material-textfield-inward ">
+              <input type="text" id="sonumber" name="sonumber"  t-att-value="state.formData.recieveby" readonly="true" placeholder=" " required="true" class="input-field-inward" />
+              <label for="recievelocation" class="input-label-inward ">Recieved by</label>
+            </div>
+            <div class="material-textfield-inward">
+              <select  class="input-field-inward select-inward"   t-on-change="(event) => vendorchange(event)"  >
+                <option value="select">Select Vendor</option>
+                <t t-foreach="state.partnerlist" t-as="partner" t-key="partner.id">
+                  <option t-att-value="partner.id" t-esc="partner.name"/>
+                </t>
+              </select>
+              <label for="vendorname" class="input-label-inward required ">Vendor Name </label>
+              <div class="error-div">
+                <t t-if="state.error_vendor != null ">
+                  <p class="error-message-rack " t-esc="state.error_vendor" />
+                </t>
+              </div>
+            </div>
+            <div class="material-textfield-inward ">
+              <input class="input-field-inward" type="text" id="sonumber" name="sonumber" placeholder=" " required="true" />
+              <label  class="input-label-inward" for="sonumber">PO #</label>
+            </div>
+          </form>
+        </div>
+      </div>
+      <t t-if="state.form">
+        <div class="rightdiv1-inward">
+          <button  t-on-click="addproducts" class="addproduct-btn-inward" >
+            <svg id="Layer_1" height="18px" viewBox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" fill="#fff">
+              <path d="m12 0a12 12 0 1 0 12 12 12.013 12.013 0 0 0 -12-12zm0 21a9 9 0 1 1 9-9 9.01 9.01 0 0 1 -9 9zm5-9a1.5 1.5 0 0 1 -1.5 1.5h-2v2a1.5 1.5 0 0 1 -3 0v-2h-2a1.5 1.5 0 0 1 0-3h2v-2a1.5 1.5 0 0 1 3 0v2h2a1.5 1.5 0 0 1 1.5 1.5z"/>
+            </svg>
+            Add Product
+          </button>
+          <div class="table-container-inward">
+
+            <t t-if="state.warning">
+                    <div  id="warning_popup" class="popup-form-page" style="padding: 11px 20px 11px 20px ! important;height: 13vh !important;position: absolute;top: 275px; ">
+                                <p>Are you sure, Do you want to delete this Row No-<t t-esc="state.removerowid" /></p>
+                        <div  class="div-sys-button1" style="display: flex;padding: 1px;gap: 8px;justify-content: center;">
+                            <button class="button-inventory2"  t-on-click='approvalremove' style="width:90px;"  type="button">Yes</button>
+                            <button class="button-inventory2"  t-on-click='exitwarningpopup' style="background:red !important;width:90px;" type="clear">No</button>
+                        </div>
+                    </div>
+                </t>
+            <div class="data-table-wrapper-inward">
+              <table id="example"  cellspacing="0" width="100%" class="data-table-inward">
+                <tr style="display:flex;width:875px">
+                  <th style="flex-basis:58px;">SNo</th>
+                  <th style="flex-basis:305px;">Product</th>
+                  <th style="flex-basis:238px;">Bin </th>
+                  <th style="flex-basis:107px;">Qty Inhand</th>
+                  <th style="flex-basis:93px;">Qty</th>
+                  <th style="flex-basis:73px;">Action</th>
+                </tr>
+                <t t-if="state.addproduct.length >0 ">
+                  <t t-foreach="state.addproduct" t-as="row" t-key="row.id">
+                    <tr style="display:flex;width:875px;"  id="row1" class="table-row">
+                      <td style="flex-basis:58px;" >
+                        <span t-esc="row.id" ></span>
+                      </td>
+                      <td style="flex-basis:305px;" >
+                        <select class="select-table-inward form-select"
+                      
+                       
+                      t-on-change="(event) => onchangeproduct
+                      (event, row.id)"
+                  >
+                          <option value=""> Select Product </option>
+                          <t t-foreach="state.product_list" t-as="product" t-key="product.id">
+                            <option t-att-value="product.id" t-esc="product.name"></option>
+                          </t>
+                        </select>
+                      </td>
+                      <td style="flex-basis:238px;" >
+                        <select 
+                     
+                      class="select-table-inward" 
+                      t-on-change="(event) => onchangelocation(event, row.id)"
+                  >
+                          <option value=""> Select Location </option>
+                          <t t-if="row.bin_locationlist.length >0 ">
+                            <t t-foreach="row.bin_locationlist" t-as="location" t-key="location.location_id">
+                              <option t-att-value="location.location_id" t-esc="location.location_name"></option>
+                            </t>
+                          </t>
+                        </select>
+                      </td>
+                      <td style="flex-basis:107px;" >
+                        <p t-esc="row.location_count" class="qty-inhand-outward" >
+                      </p>
+                      </td>
+                      <td style="flex-basis:93px;" >
+                        <input  name="units" t-model="row.units" id="units" class="input-qty-table-inward" />
+                      </td>
+                      <td style="flex-basis:73px;" class="table-data-inward" t-on-click="() => onclickwarning(row.id)" >
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="18px" height="18px" fill="red" cursor="pointer">
+                          <g>
+                            <path d="M490.667,96c0-17.673-14.327-32-32-32h-80.555C364.632,25.757,328.549,0.13,288,0h-64   c-40.549,0.13-76.632,25.757-90.112,64H53.333c-17.673,0-32,14.327-32,32l0,0c0,17.673,14.327,32,32,32H64v266.667   C64,459.468,116.532,512,181.333,512h149.333C395.468,512,448,459.468,448,394.667V128h10.667   C476.34,128,490.667,113.673,490.667,96z M384,394.667C384,424.122,360.122,448,330.667,448H181.333   C151.878,448,128,424.122,128,394.667V128h256V394.667z"/>
+                            <path d="M202.667,384c17.673,0,32-14.327,32-32V224c0-17.673-14.327-32-32-32s-32,14.327-32,32v128   C170.667,369.673,184.994,384,202.667,384z"/>
+                            <path d="M309.333,384c17.673,0,32-14.327,32-32V224c0-17.673-14.327-32-32-32s-32,14.327-32,32v128   C277.333,369.673,291.66,384,309.333,384z"/>
+                          </g>
+                        </svg>
+                      </td>
+                    </tr>
+                  </t>
+                </t>
+
+
+              
+              </table>
+            </div>
+          </div>
+          <div class="btn-group-row1-inward">
+            <button class="button-inventory1-inward"  t-on-click='submitproduct_inward'  type="button">Save</button>
+            <button class="button-inventory1-inward" style="background:red !important" type="clear">Clear</button>
+            <div id="successPopup" style="display: none; position: absolute; bottom: 39%; left: 65%; transform: translate(-50%, -50%); background: rgb(44 102 142); color: white; padding: 20px; border-radius: 10px; z-index: 1000; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+          Transfer submitted successfully!
+      </div>
+          </div>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        </div>
+      </t>
+      <t t-else="">
+        <div class="rightdiv-inward">
+       
+      </div>
+      </t>
+    </div>
+  </t>
+</templates>

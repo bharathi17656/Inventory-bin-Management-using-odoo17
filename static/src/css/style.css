@@ -1,0 +1,450 @@
+/* html .o_web_client > .o_action_manager {
+  overflow-y: scroll;
+} */
+
+.row1 {
+  margin: 29px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 42px;
+}
+
+.warehouse-box {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.customer_records_dynamic {
+  padding: 25px;
+  display: flex;
+  row-gap: 18px;
+  column-gap: 22px;
+  flex-wrap: wrap;
+}
+
+.customer_record {
+  background: #013065;
+  padding: 14px;
+  width: 410px;
+  border-radius: 25px;
+  box-sizing: border-box;
+}
+.div {
+  display: flex;
+  gap: 15px;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.p-ele {
+  font-size: 16px;
+  color: aliceblue;
+}
+
+.ware-input {
+  width: 233px;
+  border: none;
+  font-size: 17px;
+  padding-left: 8px;
+  background-color: oldlace;
+  height: 36px;
+  border-radius: 9px;
+  border-bottom: 2px solid;
+}
+
+.button-group {
+  width: 420px;
+  display: flex;
+  gap: 10px;
+  padding: 22px;
+}
+
+.button-1 {
+  width: 175px;
+  border: none;
+  background: rgb(118, 10, 207);
+  font-weight: 600;
+  padding: 15px;
+  color: white;
+  border-radius: 25px;
+  border: 2px solid black;
+}
+
+.box-count {
+  margin-top: 0;
+  position: relative;
+  padding: 4px;
+  font-size: 25px;
+  bottom: 24px;
+}
+
+.box-remove {
+  cursor: pointer;
+  position: relative;
+  bottom: 41px;
+  right: 17px;
+}
+
+/* new bin management*/
+
+.newbin-group {
+  padding: 25px;
+  margin: 25px;
+  background: antiquewhite;
+}
+
+.create-rack {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+}
+
+.row-div {
+  width: 365px;
+  display: flex;
+  column-gap: 15px;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.matrix-bin {
+  display: flex;
+  flex-direction: row;
+  column-gap: 19px;
+  width: 233px;
+}
+
+.col-div {
+  display: flex;
+  column-gap: 18px;
+  justify-content: left;
+  font-size: 16px;
+  font-weight: 600;
+  width: 220px;
+}
+
+.col-input {
+  border: none;
+  background: white;
+  border-radius: 25px;
+  text-align: center;
+}
+
+/* Hide arrows in input type number on Chrome, Safari, Edge, and Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide arrows in Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.bin-input {
+  width: 223px;
+  height: 33px;
+  font-size: 17px;
+  padding-left: 6px;
+  border: none;
+  border-radius: 4px;
+  color: black;
+}
+.card {
+  /* position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    margin: -150px;
+    float: left; */
+  perspective: 500px;
+  width: 166px;
+  height: 166px;
+}
+
+.content {
+  /* position: absolute;
+    width: 100%;
+    height: 100%; */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .content {
+  transform: rotateY(180deg);
+  transition: transform 0.5s;
+}
+
+.front,
+.back {
+  width: 164px;
+  height: 164px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  background: white;
+  color: #03446a;
+  border-radius: 5px;
+  backface-visibility: hidden;
+  padding: 8px;
+  row-gap: 11px;
+}
+
+.back {
+  background: #03446a;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.content-box {
+  width: 164px;
+  height: 164px;
+  font-size: 14px;
+}
+
+.align-row {
+  font-size: 12px;
+  position: relative;
+  right: 62px;
+}
+
+.bin-allocation {
+  gap: 16px;
+  padding: 20px;
+  justify-items: center;
+  background: rgb(235, 235, 235);
+  height: 79vh;
+  width: 133vh;
+  overflow: auto;
+}
+
+.button-card {
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 10px;
+}
+
+.bin-clear {
+  width: 125px;
+  padding: 5px;
+  border-radius: 15px;
+  background: revert-layer;
+}
+
+.bin-input-value {
+  width: 151px;
+  height: 33px;
+  font-size: 17px;
+  padding-left: 6px;
+  border: none;
+  border-radius: 4px;
+  color: black;
+  background: beige;
+}
+
+.bin-input-value::placeholder {
+  font-size: 12px;
+}
+
+/* Exiting bin management*/
+
+.select-one {
+  cursor: pointer;
+  min-width: 50px;
+  width: 185px;
+  border: 3px solid olivedrab;
+  font-weight: 600;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.product-list {
+  width: 148px;
+}
+
+.bin-checkbox {
+  position: relative;
+  left: 68px;
+  margin: -19px;
+  top: -14px;
+}
+
+.bin-checkbox1 {
+  left: 18px;
+  font-size: 13px;
+  top: -27px;
+}
+
+/* search product page*/
+
+:root {
+  --rad: 0.7rem;
+  --dur: 0.3s;
+  --color-dark: #2f2f2f;
+  --color-light: #ebebeb;
+  --color-brand: #57bd84;
+  --font-fam: "Lato", sans-serif;
+  --height: 5rem;
+  --btn-width: 6rem;
+  --bez: cubic-bezier(0, 0, 0.43, 1.49);
+}
+
+.search-main-div {
+  padding: 15px;
+  margin: 1px 76px;
+}
+
+.search-btn1:hover {
+  background-color: #076931;
+  color: white;
+}
+
+.form-search {
+  position: relative;
+  width: 18rem;
+  top: 16px;
+  background: var(--color-brand);
+  border-radius: var(--rad);
+}
+.search-input,
+.search-btn1 {
+  border: 1px solid #e4d9d9;
+  height: 63px;
+  font-family: var(--font-fam);
+  border: 0;
+  color: var(--color-dark);
+  font-size: 1.8rem;
+}
+.search-input[type="search"] {
+  outline: 0;
+  height: 53px;
+  width: 100%;
+  background: var(--color-light);
+  padding: 0 1.6rem;
+  border-radius: var(--rad);
+  appearance: none;
+  transition: all var(--dur) var(--bez);
+  transition-property: width, border-radius;
+  z-index: 1;
+  font-size: 18px;
+  position: relative;
+}
+.search-btn1 {
+  display: none;
+  height: 53px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--btn-width);
+  font-weight: bold;
+  background: var(--color-brand);
+  border-radius: 0 var(--rad) var(--rad) 0;
+}
+.search-input:not(:placeholder-shown) {
+  border-radius: var(--rad) 0 0 var(--rad);
+  width: calc(100% - var(--btn-width));
+  + button {
+    display: block;
+  }
+}
+
+.label-search {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+/* Custom Table Styling */
+.table-hover tbody tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Highlight the entire row */
+/* .table-hover tbody tr:hover td {
+    font-weight: bold;
+} */
+
+/* Center align table data */
+.table th {
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 42px;
+}
+.table td {
+  margin-top: 38px;
+}
+
+/*Home page Inventory Css*/
+
+.btn-inventory {
+  display: flex;
+  text-align: center;
+  margin: 27px 39%;
+}
+
+.line-btn {
+  width: 162px;
+  height: 7px;
+  position: relative;
+  border-top: 7px black solid;
+  top: 25px;
+}
+
+.bin-btn,
+.wh-btn,
+.rn-btn {
+  cursor: pointer;
+}
+
+/* pop up */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-dialog {
+  margin: 10% auto;
+  max-width: 971px;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 0.3rem;
+  padding: 20px;
+}
+
+/* .o_action_manager {
+    overflow: hidden !important;
+}
+ */
+
+/* inward styles */

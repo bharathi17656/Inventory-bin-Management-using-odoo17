@@ -1,0 +1,48 @@
+
+<templates>
+    <t t-name="WarehouseManagement">
+        <div class="body-div-warehouse">
+            <!-- bin forms -->
+            <div style="display: grid; grid-template-columns: 36% 1fr">
+                <div class="bin-form-warehouse">
+                    <p class="fom-heading-warehouse">New Warehouse Management</p>
+                    <div class="form-container-warehouse">
+                        <form id="dropdownForm" class="form-warehouse">
+                            <t t-foreach="state.warehouse" t-as="warehouse" t-key="warehouse.id">
+                                <div class="input-container-warehouse">
+                                    <label for="prefix" class="label-warehouse">Parent Warehouse</label>
+                                    <select id="prefix" name="prefix" class="select-warehouse" t-on-change="(event) => onWarehouseChange(event, warehouse.id)">
+                                        <option value="select">No Parent Warehouse</option>
+                                        <t t-foreach="state.warehouse_list" t-as="parentWarehouse" t-key="parentWarehouse.id">
+                                            <option t-att-value="parentWarehouse.id" t-esc="parentWarehouse.name"/>
+                                        </t>
+                                    </select>
+                                    <p class="error-message-warehouse" t-if="warehouse.errors?.parentWarehouse" t-esc="warehouse.errors.parentWarehouse"></p>
+                                </div>
+                                <div class="input-container-warehouse">
+                                    <label for="country" class="label-warehouse">Warehouse Name</label>
+                                    <input type="text" class="input-warehouse" placeholder="Warehouse" t-model="warehouse.name"/>
+                                    <p class="error-message-warehouse" t-if="warehouse.errors?.name" t-esc="warehouse.errors.name"></p>
+                                </div>
+                                <div class="input-container-warehouse">
+                                    <label for="state" class="label-warehouse">Short Name</label>
+                                    <input type="text" class="input-warehouse" placeholder="Shortname" t-model="warehouse.shortname"/>
+                                    <p class="error-message-warehouse" t-if="warehouse.errors?.shortname" t-esc="warehouse.errors.shortname"></p>
+                                </div>
+                                <div class="button-container-warehouse">
+                                    <button type="button" t-on-click="submitwarehouse" class="button-warehouse">Submit</button>
+                                    <t t-if="state.message != 0">
+                                        <div>
+                                            <p t-esc="state.message" />
+                                        </div>
+                                    </t>
+                                </div>
+                            </t>
+                        </form>
+                    </div>
+                </div>
+                <div class="bin-form-2-warehouse"></div>
+            </div>
+        </div>
+    </t>
+</templates>

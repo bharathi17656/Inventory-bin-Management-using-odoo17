@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="RackManagement">
+        <!-- <div class="newbin-group">
+            <h1>New Rack Management</h1>
+
+            <div class="create-rack"
+            >
+                      <div class="row-div">
+                            <label for="warehouseSelect">Select Warehouse:</label>
+                        <select class="select-one" id="warehouseSelect" t-on-change="onWarehouseChange">
+                            <option value="select"> Select Warehouse </option>
+                            <option value="parentnull">No Parent</option>
+                            <t t-foreach="state.warehouse_list" t-as="warehouse" t-key="warehouse.id">
+                                <option t-att-value="warehouse.id" t-esc="warehouse.name" />
+                            </t>
+                        </select>
+            
+                         </div>
+                         <div class="row-div">
+                            <label for="warehouseSelect">Select Child Warehouse:</label>
+                        <select class="select-one" id="warehouseSelect" t-on-change="onWarehouseChildChange">
+                            <option value="select">Select Child Warehouse</option>
+                            <t t-foreach="state.child_list" t-as="child" t-key="child.id">
+                                <option t-att-value="child.id" t-esc="child.name" />
+                            </t>
+                        </select>
+            
+                         </div>
+                         <div class="row-div"><p>Rack Name</p><input class="bin-input" t-model="state.rack_name" placeholder="Ex: Rack25 " /></div>
+
+                        
+                   
+            
+                    </div> 
+
+                    <div class="button-card">
+                        <button class="bin-clear" t-on-click="cleardata">Reset</button>
+                        <button class="bin-clear" t-on-click="createrack">Submit</button>
+                    </div>
+            </div>
+             -->
+        <div class="body-div-rack ">
+            <!-- rack forms -->
+            <div style="display: grid; grid-template-columns: 30% 1fr">
+                <div class="bin-form-rack ">
+                    
+                    <div class="form-container-rack ">
+                        <form id="dropdownForm" class="form-rack" >
+                            <!-- <div class="input-container-rack ">
+                                <label for="warehouseSelect" class="label-rack ">Warehouse</label>
+                                <select id="warehouseSelect" t-on-change="onWarehouseChange" class="select-rack ">
+                                    <option value="select"> Select Warehouse </option>
+                                    <option value="parentnull">No Parent</option>
+                                    <t t-foreach="state.warehouse_list" t-as="warehouse" t-key="warehouse.id">
+                                        <option t-att-value="warehouse.id" t-esc="warehouse.name" />
+                                    </t>
+                                </select>
+                                <p class="error-message-rack "></p>
+                            </div> -->
+                            <div class="input-container-rack ">
+                                <label for="warehouseSelect" class="label-rack ">Create/Select Warehouse</label>
+                                <select id="warehouseSelect" t-on-change="onWarehouseChildChange" class="select-rack ">
+                                    <option value="select"> Select Warehouse </option>
+                                    <!-- <option value="parentnull">No Parent</option> -->
+                                    <t t-foreach="state.warehouse_list" t-as="warehouse" t-key="warehouse.id">
+                                        <option t-att-value="warehouse.id" t-esc="warehouse.name" />
+                                    </t>
+                                   
+                                </select>
+                                 <t t-if="state.error_warehouse != null "><p class="error-message-rack " t-esc="state.error_warehouse" /></t>
+                            </div>
+                            <div class="input-container-rack ">
+                                <label for="state" class="label-rack ">Create/Select Racks</label>
+                                <input type="text"  class="input-rack " t-model="state.rack_name" placeholder="Rackname"/>
+                                 <t t-if="state.error_rackname != null "><p class="error-message-rack " t-esc="state.error_rackname" /></t>
+                            </div>
+                            <div class="button-container-rack ">
+                                <button type="button" t-on-click="createrack"  class="button-rack-submit ">Submit</button>
+                                <button type="button" class="button-rack-clear "  t-on-click="cleardata ">Clear</button>
+                          
+                            </div>
+
+                             
+
+
+
+
+
+                             <t t-if="state.error_submit != null ">
+                             <div id="successPopup" style=" position: absolute; bottom: 10%; left: 50%; transform: translate(-50%, -50%); background: green; color: white; padding: 20px; border-radius: 10px; z-index: 1000; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                                Rack Created Successfully
+                            </div>
+                            </t>
+                            <t t-if="state.error_clear != null ">
+                             <div id="successPopup" style=" position: absolute; bottom: 10%; left: 50%; transform: translate(-50%, -50%); background: green; color: white; padding: 20px; border-radius: 10px; z-index: 1000; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                                Form Cleared Successfully
+                            </div>
+                            </t>
+                        </form>
+                    </div>
+                </div>
+                <div class="bin-form-2-rack "></div>
+            </div>
+        </div>
+    </t>
+</templates>

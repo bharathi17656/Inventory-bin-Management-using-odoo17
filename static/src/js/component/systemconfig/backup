@@ -1,0 +1,70 @@
+
+                        <div class="table-container-user">
+                            <!-- <div class="header">User Details
+                               
+                            </div> -->
+                            <div class="data-table-wrapper">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr class="table-row table-header">
+                                            <th class="column-sn">S.No</th>
+                                            <th class="column-name">Name</th>
+                                            <th class="column-email">User Name</th>
+                                            <th class="column-action">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="serial_number" t-value="0" />
+                                        <t t-foreach="state.filteredTableData"  t-as="user" t-key="user.id">
+                                            <tr class="table-row">
+                                                <td class="column-name">
+                                                    <t t-set="serial_number" t-value="serial_number + 1" />
+                                                    <t t-esc="serial_number" />
+                                                </td>
+                                                <td class="column-name">
+                                                    <t t-esc="user.name" />
+                                                </td>
+                                                <td class="column-name">
+                                                    <t t-esc="user.email" />
+                                                </td>
+                                                <td class="column-name">
+                                                    <a class="action-btn "  t-on-click="()=>updateusermodel(user.id)">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20" height="20" fill="green">
+                                                            <path d="M18.656.93,6.464,13.122A4.966,4.966,0,0,0,5,16.657V18a1,1,0,0,0,1,1H7.343a4.966,4.966,0,0,0,3.535-1.464L23.07,5.344a3.125,3.125,0,0,0,0-4.414A3.194,3.194,0,0,0,18.656.93Zm3,3L9.464,16.122A3.02,3.02,0,0,1,7.343,17H7v-.343a3.02,3.02,0,0,1,.878-2.121L20.07,2.344a1.148,1.148,0,0,1,1.586,0A1.123,1.123,0,0,1,21.656,3.93Z"/>
+                                                            <path d="M23,8.979a1,1,0,0,0-1,1V15H18a3,3,0,0,0-3,3v4H5a3,3,0,0,1-3-3V5A3,3,0,0,1,5,2h9.042a1,1,0,0,0,0-2H5A5.006,5.006,0,0,0,0,5V19a5.006,5.006,0,0,0,5,5H16.343a4.968,4.968,0,0,0,3.536-1.464l2.656-2.658A4.968,4.968,0,0,0,24,16.343V9.979A1,1,0,0,0,23,8.979ZM18.465,21.122a2.975,2.975,0,0,1-1.465.8V18a1,1,0,0,1,1-1h3.925a3.016,3.016,0,0,1-.8,1.464Z"/>
+                                                        </svg>
+                                                    </a>
+                                                    <a class="reset-btn"  t-on-click="updateresetpassword">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="20" height="20" fill="red">
+                                                            <path d="m23,17.091v5.909l-2.53-2.53c-2.232,2.228-5.267,3.53-8.47,3.53C5.383,24,0,18.617,0,12h3c0,4.962,4.037,9,9,9,2.402,0,4.678-.977,6.352-2.648l-2.352-2.352h5.909c.602,0,1.091.488,1.091,1.091ZM2.091,8h5.909l-2.352-2.352c1.675-1.671,3.95-2.648,6.352-2.648,4.963,0,9,4.038,9,9h3C24,5.383,18.617,0,12,0c-3.203,0-6.237,1.302-8.47,3.53L1,1v5.909c0,.603.488,1.091,1.091,1.091Z"/>
+                                                        </svg>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div>
+                            <!-- Pagination Controls -->
+                            <div class="pagination-controls-user">
+                                <button 
+                    class=" pagination-controls-button-user btn btn-primary"   
+            
+            t-on-click="() => changePage(state.currentPage - 1)" 
+            t-att-disabled="state.currentPage === 1">
+            Previous
+        </button>
+                                <span>Page
+                                    <t t-esc="state.currentPage"/> of
+                                    <t t-esc="state.totalPages"/>
+                                </span>
+                                <button 
+            class="    pagination-controls-button-user btn btn-primary" 
+            t-on-click="() => changePage(state.currentPage + 1)" 
+            t-att-disabled="state.currentPage === state.totalPages">
+            Next
+        </button>
+                            </div>
+                        </div>

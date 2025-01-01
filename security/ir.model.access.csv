@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_inventory_bin,aceess.inventory.bin,model_stock_location_details,inventory_management_master.group_inventory_bin,1,1,1,1
+acccess_reset_password,acccess.reset.password,model_res_users_password_reset,,1,1,1,1
+acccess_our_customer,acccess.our.customer,model_our_customer,,1,1,1,1
+acccess_our_vendor,acccess.our.vendor,model_our_vendor,,1,1,1,1

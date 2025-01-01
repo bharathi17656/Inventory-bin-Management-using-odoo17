@@ -1,0 +1,186 @@
+/** @odoo-module **/
+/**
+ * @module inventory_management.bin_management
+ * @description This module handles the warehouse management.
+ */
+import { Component, onWillStart, onMounted, useRef,useState } from "@odoo/owl";
+import { session } from "@web/session";
+import { loadJS } from '@web/core/assets'
+import { registry } from "@web/core/registry";
+import { useService } from "@web/core/utils/hooks";
+import { jsonrpc } from "@web/core/network/rpc_service";
+import { _t } from "@web/core/l10n/translation";
+
+
+// export class ExistingBinManagement extends Component {
+//     setup() {
+//        this.state=useState({
+//         warehouseName:[
+//             {id:1,name:"coimbatore"},
+//             {id:2,name:"chennai"},
+//             {id:3,name:"madurai"},
+//         ],
+//         rackNmae:[
+//             {id:1,name:"coimbatore-1",warehouseName:"coimbatore"},
+//             {id:2,name:"coimbatore-2",warehouseName:"coimbatore"},
+//             {id:3,name:"chennai-1",warehouseName:"chennai"},
+//             {id:4,name:"madurai-1",warehouseName:"madurai"},
+//         ],
+//         binDetails:[
+//            { id:1,rackname:"coimbatore-1",name:"demo1",row:3,col:2,totalBin:20},
+//            { id:1,rackname:"coimbatore-2",name:"demo2",row:2,col:4,totalBin:8},
+//            { id:1,rackname:"chennai-1",name:"demo3",row:2,col:2,totalBin:4},
+//            { id:1,rackname:"madurai-1",name:"demo4",row:4,col:1,totalBin:4},
+//         ],
+
+//         bindata:[
+//             {
+//                 demo1:[
+            // {id: 1, name: 'Bin 1', product_name: 'Product 1', row: 1, col: 1},
+            // {id: 2, name: 'Bin 2', product_name: 'Product 2', row: 1, col: 2},
+            // {id: 3, name: 'Bin 3', product_name: 'Product 3', row: 2, col: 1},
+            // {id: 4, name: 'Bin 4', product_name: 'Product 4', row: 2, col: 2},
+            // {id: 5, name: 'Bin 5', product_name: 'Product 5', row: 3, col: 1} ,
+            // {id: 6, name: 'Bin 6', product_name: 'Product 6', row: 2, col: 2}
+//             ]},
+//             {
+//                 demo2:[
+            // {id: 1, name: 'Bin 1', product_name: 'Product 1', row: 1, col: 1},
+            // {id: 2, name: 'Bin 2', product_name: 'Product 2', row: 1, col: 2},
+            // {id: 3, name: 'Bin 3', product_name: 'Product 3', row: 1, col: 3},
+            // {id: 4, name: 'Bin 4', product_name: 'Product 4', row: 1, col: 4},
+            // {id: 5, name: 'Bin 5', product_name: 'Product 5', row: 2, col: 1} ,
+            // {id: 6, name: 'Bin 6', product_name: 'Product 6', row: 2, col: 2},
+            // {id: 7, name: 'Bin 7', product_name: 'Product 7', row: 2, col: 3} ,
+            // {id: 8, name: 'Bin 8', product_name: 'Product 8', row: 2, col: 4}
+//             ]},
+//             {
+//                 demo3:[
+//                     {id: 1, name: 'Bin 1', product_name: 'Product 1', row: 1, col: 1},
+//                     {id: 2, name: 'Bin 2', product_name: 'Product 2', row: 1, col: 2},
+//                     {id: 3, name: 'Bin 3', product_name: 'Product 3', row: 2, col: 1},
+//                     {id: 4, name: 'Bin 4', product_name: 'Product 4', row: 2, col: 2},
+                    
+//             ]},
+//             {
+//                 demo4:[
+//                     {id: 1, name: 'Bin 1', product_name: 'Product 1', row: 1, col: 1},
+//                     {id: 2, name: 'Bin 2', product_name: 'Product 2', row: 2, col: 1},
+//                     {id: 3, name: 'Bin 3', product_name: 'Product 3', row: 3, col: 1},
+//                     {id: 4, name: 'Bin 4', product_name: 'Product 4', row: 4, col: 1},
+                    
+//                     ]}
+            
+//         ]
+//        })
+
+
+//     }
+
+
+
+  
+
+    
+// }
+// ExistingBinManagement.template = "ExistingBinManagement";
+
+
+
+
+export class ExistingBinManagement extends Component {
+    setup() {
+        this.state = useState({
+            warehouseName: [
+                { id: 1, name: "coimbatore" },
+                { id: 2, name: "chennai" },
+                { id: 3, name: "madurai" },
+            ],
+            rackName: [
+                { id: 1, name: "coimbatore-1", warehouseName: "coimbatore" },
+                { id: 2, name: "coimbatore-2", warehouseName: "coimbatore" },
+                { id: 3, name: "chennai-1", warehouseName: "chennai" },
+                { id: 4, name: "madurai-1", warehouseName: "madurai" },
+            ],
+            binDetails: [
+                { id: 1, rackname: "coimbatore-1", name: "demo1", row: 3, col: 2, totalBin: 6 },
+                { id: 2, rackname: "coimbatore-2", name: "demo2", row: 2, col: 4, totalBin: 8 },
+                { id: 3, rackname: "chennai-1", name: "demo3", row: 2, col: 2, totalBin: 4 },
+                { id: 4, rackname: "madurai-1", name: "demo4", row: 4, col: 1, totalBin: 4 },
+            ],
+            bindata: {
+                demo1: [
+                    {id: 1, name: 'Bin 1', product_name: 'Product 1', row: 1, col: 1},
+                    {id: 2, name: 'Bin 2', product_name: 'Product 2', row: 1, col: 2},
+                    {id: 3, name: 'Bin 3', product_name: 'Product 3', row: 2, col: 1},
+                    {id: 4, name: 'Bin 4', product_name: 'Product 4', row: 2, col: 2},
+                    {id: 5, name: 'Bin 5', product_name: 'Product 5', row: 3, col: 1} ,
+                    {id: 6, name: 'Bin 6', product_name: 'Product 6', row: 2, col: 2}
+                ],
+                demo2: [
+                    {id: 1, name: 'Bin 1', product_name: 'Product 1', row: 1, col: 1},
+                    {id: 2, name: 'Bin 2', product_name: 'Product 2', row: 1, col: 2},
+                    {id: 3, name: 'Bin 3', product_name: 'Product 3', row: 1, col: 3},
+                    {id: 4, name: 'Bin 4', product_name: 'Product 4', row: 1, col: 4},
+                    {id: 5, name: 'Bin 5', product_name: 'Product 5', row: 2, col: 1} ,
+                    {id: 6, name: 'Bin 6', product_name: 'Product 6', row: 2, col: 2},
+                    {id: 7, name: 'Bin 7', product_name: 'Product 7', row: 2, col: 3} ,
+                    {id: 8, name: 'Bin 8', product_name: 'Product 8', row: 2, col: 4}
+                ],
+                demo3: [
+                    {id: 1, name: 'Bin 1', product_name: 'Product 1', row: 1, col: 1},
+                    {id: 2, name: 'Bin 2', product_name: 'Product 2', row: 1, col: 2},
+                    {id: 3, name: 'Bin 3', product_name: 'Product 3', row: 2, col: 1},
+                    {id: 4, name: 'Bin 4', product_name: 'Product 4', row: 2, col: 2},
+                ],
+                demo4: [
+                   {id: 1, name: 'Bin 1', product_name: 'Product 1', row: 1, col: 1},
+                    {id: 2, name: 'Bin 2', product_name: 'Product 2', row: 2, col: 1},
+                    {id: 3, name: 'Bin 3', product_name: 'Product 3', row: 3, col: 1},
+                    {id: 4, name: 'Bin 4', product_name: 'Product 4', row: 4, col: 1},
+                ],
+                
+            },
+            selectedWarehouse: null,
+            selectedRack: null,
+            grid: "1fr",  // Default grid column
+        });
+    }
+
+    get filteredRackNames() {
+        return this.state.rackName.filter(
+            (rack) => rack.warehouseName === this.state.selectedWarehouse
+        );
+    }
+
+    get currentBinDetails() {
+        const selectedBin = this.state.binDetails.find(
+            (bin) => bin.rackname === this.state.selectedRack
+        );
+        return selectedBin ? this.state.bindata[selectedBin.name] : [];
+    }
+
+    onWarehouseChange(event) {
+        this.state.selectedWarehouse = event.target.value;
+        this.state.selectedRack = null; // Reset rack selection
+        this.state.grid = "1fr"; // Reset grid
+    }
+
+    onRackChange(event) {
+        this.state.selectedRack = event.target.value;
+
+        // Set grid based on rack columns
+        const selectedRack = this.state.binDetails.find(
+            (bin) => bin.rackname === this.state.selectedRack
+        );
+        if (selectedRack) {
+            this.state.grid = "1fr ".repeat(selectedRack.col).trim(); // Set grid dynamically
+        }
+    }
+}
+
+ExistingBinManagement.template = "ExistingBinManagement";
+registry.category("actions").add("owl.existing_bin_management", ExistingBinManagement);
+
+
+

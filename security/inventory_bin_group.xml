@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- This XML code creates the user for schedule management. -->
+    <record id="group_inventory_bin" model="res.groups">
+        <field name="name">Inventory Model Bin Creation</field>
+    </record>
+
+
+</odoo>

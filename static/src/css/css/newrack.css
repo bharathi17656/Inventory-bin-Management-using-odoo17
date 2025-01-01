@@ -1,0 +1,161 @@
+.body-div-rack {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+
+    height: 96vh;
+    
+  }
+  
+  .body-div-rack div , .body-div-bin div {
+  
+    justify-content: center;
+    align-items: center;
+  }
+  .bin-form-rack  {
+    height: 79vh;
+    width: 95%;
+    position: relative;
+    left: 19px;
+    margin-top: 10px;
+    background-color: rgb(217, 217, 217);
+    border-radius: 30px;
+  }
+  .bin-form-2-rack  {
+    height: 79vh;
+    width: 95%;
+    position: relative;
+    left: 19px;
+    margin-top: 10px;
+    background-color: rgb(217, 217, 217);
+    border-radius: 30px;
+    background-image: url(../../images/inventory.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+
+/* 
+  form styles */
+  .fom-heading-rack  {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
+    position: relative;
+    left: 25%;
+    top: 5%;
+    color: black;
+  }
+
+  
+
+
+.form-container-rack  {
+padding: 20px;
+border-radius: 8px;
+
+width: 100%;
+max-width: 343px;
+margin-left: 32px;
+margin-top: 10%;
+}
+
+
+.form-rack  {
+display: flex;
+flex-direction: column;
+}
+
+.input-container-rack  {
+margin-bottom: 10px;
+}
+
+.label-rack  {
+margin-bottom: 5px;
+    font-weight: bold;
+    margin-left: 7px;
+    color: black;
+}
+
+.select-rack  {
+width: 100%;
+padding: 10px;
+margin-top: 5px;
+border: 1px solid #ccc;
+border-radius: 20px;
+font-size: 16px;
+appearance: none;
+    
+    background: url("data:image/svg+xml,<svg height='10px' width='10px' viewBox='0 0 16 16'  xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>") no-repeat;
+background-position: calc(100% - 0.75rem) center !important;
+
+padding-right: 2rem !important;
+background-color: #fff;
+}
+.input-rack {
+width: 100%;
+padding: 10px;
+margin-top: 5px;
+border: 1px solid #ccc;
+border-radius: 20px;
+font-size: 16px; 
+}
+
+.error-message-rack  {
+color: red;
+font-size: 11px;
+margin-top: 0px;
+
+}
+
+
+
+
+
+
+.button-container-rack  {
+  display: flex
+  ;
+  position: relative;
+  gap: 11px;
+  text-align: center;
+  align-items: center;
+  justify-content: right;
+  right: 0px;
+  top: 15px;
+  }
+
+
+.button-rack-submit  {
+  width: 30%;
+  height: 36px;
+  padding: 7px;
+  background-color: green ;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-weight: bold;
+}
+.button-rack-clear {
+  width: 30%;
+  height: 36px;
+  padding: 7px;
+  background-color: red ;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-weight: bold;
+}
+
+
+.button-rack :hover {
+background-color: #0056b3; /* Darker blue on hover */
+}
+

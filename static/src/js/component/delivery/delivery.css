@@ -1,0 +1,395 @@
+.leftdiv1-outward {
+  margin-top: 15px;
+}
+.rightdiv1-outward {
+  background-color: #fff;
+  margin-top: 10px;
+  margin-left: 10px;
+  height: 79vh;
+  width: 62vw;
+  border-radius: 20px;
+}
+.twogrid1-outward {
+  display: grid;
+  grid-template-columns: 32% 1fr;
+  background-color: rgb(235, 235, 235);
+  height: 92vh;
+  width: 96vw;
+}
+
+.animate-img1-outward {
+  background: url("../../../images/inout.jpg");
+  width: 100%;
+  height: 99%;
+  background-position: center;
+  background-size: cover;
+  border-radius: 20px;
+}
+
+.h2-inventory-outward {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin: 10px 0px 0px 0px;
+}
+
+.product-tbl-outward {
+  margin-top: 15px;
+  width: 97%;
+  height: 359px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-left: 15px;
+}
+
+.select-table-outward {
+  font-size: 16px;
+  appearance: none;
+  appearance: none;
+
+  background: url("data:image/svg+xml,<svg height='10px' width='10px' viewBox='0 0 16 16'  xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>")
+    no-repeat;
+  background-position: calc(100% - 0.75rem) center !important;
+
+  padding-right: 1rem !important;
+
+  border: none;
+}
+
+.input-qty-outward {
+  width: 69%;
+  padding: 7px;
+  font-size: 14px;
+  border: none;
+  border-radius: 10px;
+}
+.input-qty-table-outward {
+  width: 58%;
+  height: 34px;
+
+  font-size: 14px;
+  border: 2px solid grey;
+  border-radius: 10px;
+}
+
+.product-tbl-outward td {
+  background-color: rgb(235, 235, 235);
+  text-align: center;
+}
+
+.qty-inhand-outward {
+  background-color: #fff;
+  margin: 0px 0px 0px -3px;
+  border: 2px solid grey;
+  height: 34px;
+  border-radius: 10px;
+  width: 109%;
+}
+.add-button-outward {
+  background-color: green;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 6px;
+}
+.delete-button-outward {
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 6px;
+}
+.main-add-outward {
+  float: right;
+  margin: 0px 20px 20px 0px;
+  border-radius: 20px;
+  border: none;
+  background-color: green;
+  color: white;
+  position: absolute;
+  top: 50px;
+  right: 2px;
+  padding: 5px 10px 5px 10px;
+  font-weight: 500;
+}
+.btn-group-row1-outward {
+  display: flex;
+  position: relative;
+  gap: 11px;
+  text-align: center;
+  align-items: center;
+  justify-content: right;
+  right: 38px;
+  top: 18px;
+}
+.button-inventory1-outward {
+  width: 8%;
+  height: 36px;
+  padding: 7px;
+  background-color: green;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-weight: bold;
+}
+
+.bin-form-outward {
+  height: 79vh;
+  width: 95%;
+  position: relative;
+  left: 19px;
+  margin-top: 10px;
+  background-color: #fff;
+  border-radius: 20px;
+}
+.bin-form-2-outward {
+  height: 83vh;
+  width: 95%;
+  position: relative;
+  left: 19px;
+  margin-top: 10px;
+  background-color: rgb(217, 217, 217);
+  border-radius: 20px;
+  background-image: url(/images/bg\ inventory.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+/* 
+  form styles */
+.fom-heading-outward {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  position: relative;
+  left: 25%;
+  top: 5%;
+}
+
+.form-container-outward {
+  padding: 20px;
+  border-radius: 8px;
+
+  width: 100%;
+  max-width: 343px;
+  margin-left: 46px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.label-outward {
+  font-weight: bold;
+  margin-left: 7px;
+}
+
+.select-outward {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+  appearance: none;
+
+  background: url("data:image/svg+xml,<svg height='10px' width='10px' viewBox='0 0 16 16'  xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>")
+    no-repeat;
+  background-position: calc(100% - 0.75rem) center !important;
+
+  padding-right: 2rem !important;
+  background-color: #fff;
+}
+
+.error-message-outward {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.input-outward {
+  width: 100%;
+  padding: 10px;
+
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+}
+/* .input-outward-notrequired{
+  width: 100%;
+  padding: 10px;
+  
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px; 
+  margin-bottom: 18px;
+} */
+.required:after {
+  content: "*";
+  display: inline-block;
+
+  margin-left: -3px;
+  color: red;
+}
+.required1:after {
+  content: "*";
+  display: inline-block;
+
+  margin-left: 1px;
+  color: red;
+}
+
+.error-div {
+  height: 1vh;
+}
+
+.addproduct-btn-outward {
+  border: none;
+  padding: 5px;
+  background-color: green;
+  color: white;
+  font-weight: 500;
+  border-radius: 5px;
+
+  margin: 14px 43px 7px 5px;
+  font-size: 14px;
+  float: right;
+}
+
+/* input and label styles */
+
+/* Container */
+.input-container-outward {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Wrapper for input and label */
+.material-textfield-outward {
+  position: relative;
+  display: inline-block;
+  width: 100%; /* Adjust as needed */
+  margin-top: 25px;
+}
+
+/* Input styles */
+.input-field-outward {
+  font-size: 1rem;
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 10px;
+  width: 95%;
+  color: gray;
+  transition: border-color 0.2s ease-out;
+}
+
+/* Input focus state */
+.input-field-outward:focus {
+  border-color: rgb(4, 139, 255);
+}
+
+/* Label styles */
+.input-label-outward {
+  position: absolute;
+  font-size: 1rem;
+  left: 10px; /* Adjust to match padding of input */
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  color: gray;
+  padding: 0 0.3rem;
+  transition: 0.2s ease-out;
+  pointer-events: none; /* Prevent label from interfering with input click */
+}
+
+/* Label moves up when input is focused or has value */
+.input-field-outward:focus + .input-label-outward,
+.input-field-outward:not(:placeholder-shown) + .input-label-outward {
+  top: -2px;
+  left: 5px;
+  font-size: 12px;
+  color: rgb(4, 139, 255);
+  font-weight: bold;
+}
+
+/* Placeholder hidden when input is focused or has value */
+.input-field-outward:focus::placeholder,
+.input-field-outward:not(:placeholder-shown)::placeholder {
+  opacity: 0;
+}
+
+.select-outward {
+  appearance: none;
+
+  background: url("data:image/svg+xml,<svg height='10px' width='10px' viewBox='0 0 16 16'  xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>")
+    no-repeat;
+  background-position: calc(100% - 0.75rem) center !important;
+
+  padding-right: 2rem !important;
+}
+
+/* table style */
+
+.table-container-outward {
+  width: 92%;
+  height: 62vh;
+  margin: 25px 0 0 36px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.data-table-wrapper-outward {
+  display: block;
+  height: 98%;
+  overflow-y: auto;
+  border-top: 1px solid #ddd;
+}
+
+.data-table-outward {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table-outward td {
+  text-align: left;
+  padding: 8px 15px;
+  border: 1px solid #ddd;
+}
+
+.data-table-outward th {
+  font-weight: bold;
+  text-align: left;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  background-color: rgb(3, 73, 81) !important;
+  color: #fff;
+  z-index: 1;
+}
+
+.data-table-outward tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.data-table-outward tr:hover {
+  background-color: #f1f1f1;
+}

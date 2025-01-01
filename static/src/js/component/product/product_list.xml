@@ -1,0 +1,269 @@
+<templates>
+    <t t-name="ProductPage" >
+        <div class="headbody">
+            <div class="right-page-product">
+            <div t-att-class="state.popupmode ? 'twogrid1-user main-popup-hidden' : 'twogrid1-user' ">
+               
+                    <div class="bin-form-user" style="height: 79vh !important;">
+                        <!-- <h1 style="margin-left: 105px; padding: 7px 10px 0px 10px;font-weight: 500;">Create Product</h1> -->
+                        <div class="form-container-user " style="padding:0px !important">
+                            <form id="dropdownForm" >
+                                <div class="material-textfield-user">
+                                    <input type="text" id="date" name="name" value='' t-on-change='onchangeproductform' placeholder=" " required="true"  class="input-field-user "/>
+                                    <label for="date" class="input-label-user required">Product  Name </label>
+                                </div>
+                                <t t-if="state.form_error.error_name != null ">
+                                    <p class="error-message-rack" style="position:absolute; top:117px; " t-esc="state.form_error.error_name" />
+                                </t>
+                                <div class="material-textfield-user">
+                                    <input type="text" id="sonumber" class="input-field-user" name="code" value='' t-on-change='onchangeproductform'  placeholder=" "   required="true" />
+                                    <label for="vendorname" class="input-label-user required1">Product Code</label>
+                                </div>
+                                <t t-if="state.form_error.error_code != null ">
+                                    <p class="error-message-rack " style="position:absolute; top:186px; " t-esc="state.form_error.error_code" />
+                                </t>
+                                <!-- <div class="material-textfield-password">
+                                    <select class="input-field-password select-password"  name="category"  t-on-change="selectedlist">
+                                        <option value="Select "> Select Category</option>
+                                        <t t-foreach="state.category_list" t-as="cate" t-key="cate.id">
+                                            <option t-att-value="cate.id" t-esc="cate.name"/>
+                                        </t>
+                                    </select>
+                                    <label for="recievelocation" class="input-label-password required"> Category </label>
+                                </div> -->
+                                <t t-if="state.form_error.error_cate != null ">
+                                    <p class="error-message-rack " style="position:absolute; top:252px;"  t-esc="state.form_error.error_cate" />
+                                </t>
+                                <div class="material-textfield-password">
+                                    <select class="input-field-password select-password"  name="uom"  t-on-change="selectedlist">
+                                        <option value="1"> Units </option>
+                                        <t t-foreach="state.uom_list" t-as="uom" t-key="uom.id">
+                                            <t t-if="uom.id!=1">
+                                                <option t-att-value="uom.id" t-esc="uom.name['en_US']"/>
+                                            </t>
+                                        </t>
+                                    </select>
+                                    <label for="recievelocation" class="input-label-password"> UOM </label>
+                                </div>
+                                <t t-if="state.form_error.error_uom != null ">
+                                    <p class="error-message-rack " style="position:absolute; top:321px;"  t-esc="state.form_error.error_uom" />
+                                </t>
+                                <div class="material-textfield-user ">
+                                    <input type="text" class="input-field-user"  id="sonumber" name="std" value='' t-on-change='onchangeproductform' placeholder="" required="true" />
+                                    <label  class="input-label-user required " for="sonumber">  Price </label>
+                                </div>
+                                <t t-if="state.form_error.error_std != null ">
+                                    <p class="error-message-rack " style="position:absolute; top:390px;"  t-esc="state.form_error.error_std" />
+                                </t>
+                                <div class="material-textfield-user ">
+                                    <input type="file" class="input-field-user" id="img" name="img" accept="image/*" value='' t-on-change='onchangeproductform' placeholder=" "  required="true" />
+                                    <label  class="input-label-user  " for="sonumber">Product Image</label>
+                                </div>
+                            </form>
+                            <div  class="div-sys-button" style="margin-top: 2% !important;">
+                                <button class="button-inventory1"  t-on-click='onsubmitproduct' style="width:90px;"  type="button">Save</button>
+                                <button class="button-inventory1"  t-on-click='onclearform' style="background:red !important;width:90px;" type="clear">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rightdiv1-user" style="height: 79vh !important;">
+                     
+                            <div class="table-container-user" style="height: 71vh !important;">
+                                 <div class="material-textfield-search">
+                                    <input type="text" id="sonumber" class="input-field-customer" name="state" placeholder="Search..."  value=""   t-on-keyup='globalsearch' />
+                                    <label  class="input-label-customer" for="sonumber">Search</label>
+                                </div>
+                                 <t t-if="state.filteredTableData.length > 0">
+
+                                <div class="data-table-wrapper" style="height: 64vh !important;">
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr class="table-row table-header">
+                                                <th class="column-name">S.No</th>
+                                                <th class="column-name">Product Code</th>
+                                                <th class="column-email">Product Name</th>
+                                                <th class="column-name">Price (₹)</th>
+                                                <th class="column-action">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-set="serial_number" t-value="0" />
+                                            <t t-foreach="state.filteredTableData"  t-as="pro" t-key="pro.id">
+                                                <tr class="table-row">
+                                                    <td class="column-name">
+                                                        <t t-set="serial_number" t-value="serial_number + 1" />
+                                                        <t t-esc="serial_number" />
+                                                    </td>
+                                                    <td class="column-name">
+                                                        <t t-esc="pro.default_code" />
+                                                    </td>
+                                                    <td class="column-name">
+                                                        <t t-esc="pro.name['en_US']" />
+                                                    </td>
+                                                    <td class="column-name">
+                                                        <t t-esc="pro.list_price" />
+                                                    </td>
+                                                    <td class="column-name">
+                                                        <a class="action-btn" t-on-click="()=>updateproductpage(pro.id)">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20" height="20" fill="green">
+                                                                <path d="M18.656.93,6.464,13.122A4.966,4.966,0,0,0,5,16.657V18a1,1,0,0,0,1,1H7.343a4.966,4.966,0,0,0,3.535-1.464L23.07,5.344a3.125,3.125,0,0,0,0-4.414A3.194,3.194,0,0,0,18.656.93Zm3,3L9.464,16.122A3.02,3.02,0,0,1,7.343,17H7v-.343a3.02,3.02,0,0,1,.878-2.121L20.07,2.344a1.148,1.148,0,0,1,1.586,0A1.123,1.123,0,0,1,21.656,3.93Z"/>
+                                                                <path d="M23,8.979a1,1,0,0,0-1,1V15H18a3,3,0,0,0-3,3v4H5a3,3,0,0,1-3-3V5A3,3,0,0,1,5,2h9.042a1,1,0,0,0,0-2H5A5.006,5.006,0,0,0,0,5V19a5.006,5.006,0,0,0,5,5H16.343a4.968,4.968,0,0,0,3.536-1.464l2.656-2.658A4.968,4.968,0,0,0,24,16.343V9.979A1,1,0,0,0,23,8.979ZM18.465,21.122a2.975,2.975,0,0,1-1.465.8V18a1,1,0,0,1,1-1h3.925a3.016,3.016,0,0,1-.8,1.464Z"/>
+                                                            </svg>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                </t>
+                                <t t-else="">
+                                    <div class="alert alert-info mt-3" role="alert">
+                                                No record found for the given filter criteria.
+                                            </div>
+                                </t>
+                            </div>
+
+                            <div>
+                                <!-- Pagination Controls -->
+                                <div class="pagination-controls-user">
+                                    <button 
+                    class=" pagination-controls-button-user btn btn-primary"   
+            
+            t-on-click="() => changePage(state.currentPage - 1)" 
+            t-att-disabled="state.currentPage === 1">
+            Previous
+        </button>
+                                    <span>Page
+                                        <t t-esc="state.currentPage"/> of
+                                        <t t-esc="state.totalPages"/>
+                                    </span>
+                                    <button 
+            class="    pagination-controls-button-user btn btn-primary" 
+            t-on-click="() => changePage(state.currentPage + 1)" 
+            t-att-disabled="state.currentPage === state.totalPages">
+            Next
+        </button>
+                                </div>
+                            </div>
+                    
+                    </div>
+                </div>
+
+                
+                <t t-if="state.popupmode">
+        
+                <div class="popup-container1">
+
+                    <div class="topheader-exit1"> <h1 style="position: relative;top: 9px;">Product Details</h1>  <p class="exiticon1" t-on-click="exitpopup"><svg width="24px" height="24px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <title>cancel</title>
+                                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g id="work-case" fill="#000000" transform="translate(91.520000, 91.520000)">
+                                                    <polygon id="Close" points="328.96 30.2933333 298.666667 1.42108547e-14 164.48 134.4 30.2933333 1.42108547e-14 1.42108547e-14 30.2933333 134.4 164.48 1.42108547e-14 298.666667 30.2933333 328.96 164.48 194.56 298.666667 328.96 328.96 298.666667 194.56 164.48">
+
+                                        </polygon>
+                                                </g>
+                                            </g>
+                                        </svg>
+                            </p></div>
+
+                <div class="form-container-user1 ">
+                            
+                            <form id="dropdownForm5" >
+                                <div class="material-textfield-user">
+                                    <input type="text" id="date" name="name" value='' t-on-change='onchangeproductform' placeholder=" " required="true"  class="input-field-user "/>
+                                    <label for="date" class="input-label-user required">Product  Name </label>
+                                </div>
+                                <t t-if="state.form_error.error_name != null ">
+                                    <p class="error-message-rack" style="position:absolute; top:117px; " t-esc="state.form_error.error_name" />
+                                </t>
+                                <div class="material-textfield-user">
+                                    <input type="text" id="sonumber" class="input-field-user" name="code" value='' t-on-change='onchangeproductform'  placeholder=" "   required="true" />
+                                    <label for="vendorname" class="input-label-user required1">Product Code</label>
+                                </div>
+                                <t t-if="state.form_error.error_code != null ">
+                                    <p class="error-message-rack " style="position:absolute; top:186px; " t-esc="state.form_error.error_code" />
+                                </t>
+                                <!-- <div class="material-textfield-password">
+                                    <select class="input-field-password select-password"  name="category"  t-on-change="selectedlist">
+                                        <option value="Select "> Select Category</option>
+                                        <t t-foreach="state.category_list" t-as="cate" t-key="cate.id">
+                                            <option t-att-value="cate.id" t-esc="cate.name"/>
+                                        </t>
+                                    </select>
+                                    <label for="recievelocation" class="input-label-password required"> Category </label>
+                                </div> -->
+                                <t t-if="state.form_error.error_cate != null ">
+                                    <p class="error-message-rack " style="position:absolute; top:252px;"  t-esc="state.form_error.error_cate" />
+                                </t>
+                                <div class="material-textfield-password">
+                                    <select class="input-field-password select-password"  name="uom"  t-on-change="selectedlist">
+                                        <!-- <option value="1"> Units </option> -->
+                                        <t t-foreach="state.uom_list" t-as="uom" t-key="uom.id">
+                                           
+                                                <option t-att-value="uom.id" t-esc="uom.name['en_US']"/>
+                                    
+                                        </t>
+                                    </select>
+                                    <label for="recievelocation" class="input-label-password"> UOM </label>
+                                </div>
+                                <t t-if="state.form_error.error_uom != null ">
+                                    <p class="error-message-rack " style="position:absolute; top:321px;"  t-esc="state.form_error.error_uom" />
+                                </t>
+                                <div class="material-textfield-user ">
+                                    <input type="text" class="input-field-user"  id="sonumber" name="std" value='' t-on-change='onchangeproductform' placeholder="" required="true" />
+                                    <label  class="input-label-user required " for="sonumber">  Price </label>
+                                </div>
+                                <t t-if="state.form_error.error_std != null ">
+                                    <p class="error-message-rack " style="position:absolute; top:390px;"  t-esc="state.form_error.error_std" />
+                                </t>
+                                
+                            </form>
+                           <div class="imagepreview" style="height: 24vh;">
+                                    <a class="associatevendor">Associated Vendor(s)</a>
+
+        
+                                <div class="material-textfield-user" style="left: 17px;width: 23%;top: 44%;">
+                                    <input style="width: 9%;border: none;position: relative;left: 18px;bottom: 24px;"
+                                        type="file"
+                                        class="input-field-user "
+                                        id="img"
+                                        name="img"
+                                        accept="image/*"
+                                        t-on-change="onchangeproductform"
+                                        placeholder=" "
+                                        required="true"
+                                    />
+                                    <label style="top: 2px;left: 12px;cursor: pointer;" class="input-label-user custom-upload-button" for="img"><span class="plus-icon">+</span></label>
+                                </div>
+                                <div class="preview-container" style="margin-top: 10px;">
+                                
+                                    <img
+                                        id="imagePreview"
+                                        class="imagepreviewimg"
+                                        t-att-src="'data:image/png;base64,'+state.productform.image"
+                                        alt="Image Preview"
+                                        style="display: none;"
+                                    />
+                                  
+                                    <t t-if="state.productform.image == null and state.imagenotfound">
+                                    <svg fill="#000000" width="200px" height="200px" viewBox="0 0 32 32" id="icon" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;}</style></defs><title>no-image</title><path d="M30,3.4141,28.5859,2,2,28.5859,3.4141,30l2-2H26a2.0027,2.0027,0,0,0,2-2V5.4141ZM26,26H7.4141l7.7929-7.793,2.3788,2.3787a2,2,0,0,0,2.8284,0L22,19l4,3.9973Zm0-5.8318-2.5858-2.5859a2,2,0,0,0-2.8284,0L19,19.1682l-2.377-2.3771L26,7.4141Z"/><path d="M6,22V19l5-4.9966,1.3733,1.3733,1.4159-1.416-1.375-1.375a2,2,0,0,0-2.8284,0L6,16.1716V6H22V4H6A2.002,2.002,0,0,0,4,6V22Z"/><rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1" width="32" height="32"/></svg>
+                                   
+                                    </t>
+                                </div>
+                            </div>
+                            <div  class="div-sys-buttons2" style="margin-top: 2% !important;">
+                                <button class="button-inventory1"  t-on-click='onsubmitupdateproduct' style="width:90px;"  type="button">Save</button>
+                                <button class="button-inventory1"  t-on-click='onclearform' style="background:red !important;width:90px;" type="clear">Clear</button>
+                            </div>
+                        </div>
+                        </div>
+                        </t>
+
+            </div>
+        </div>
+    </t>
+</templates>
+<!-- <td class="column-name">
+                                                    <img t-att-src="'data:image/jpeg;base64,' + pro.baseimage" alt="Product Image" style="width:20px" />
+                                                </td> -->

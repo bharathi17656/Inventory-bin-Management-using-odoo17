@@ -1,0 +1,363 @@
+.tab {
+  overflow: hidden;
+  margin-top: 3px;
+  margin-left: 15px;
+}
+
+.tab-button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 8px 18px;
+  transition: 0.3s;
+  font-size: 14px;
+}
+/* .tab-button:hover {
+  background-color: #ddd;
+  color: black;
+} */
+
+.twogrid1-user {
+  display: grid;
+  grid-template-columns: 32% 1fr;
+
+  height: 92vh;
+  width: 95vw;
+  background-color: rgb(235, 235, 235);
+  border-radius: 12px 0px 0px 0px;
+}
+
+.bin-form-user {
+  height: 74vh;
+  width: 95%;
+  position: relative;
+  left: 19px;
+  margin-top: 10px;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.leftdiv1-user {
+  margin-top: 15px;
+}
+
+.form-container-user {
+  padding: 20px;
+  border-radius: 8px;
+
+  width: 100%;
+  max-width: 343px;
+  margin-left: 46px;
+}
+
+.rightdiv1-user {
+  margin-top: 10px;
+  margin-left: 10px;
+  height: 74vh;
+  border-radius: 20px;
+  background-color: white;
+  margin-right: 18px;
+}
+
+/* table style */
+
+.table-container-user {
+  width: 92%;
+  height: 65vh;
+  margin: 9px 0 0 36px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  border-radius: 5px;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  overflow: hidden;
+}
+
+.header {
+  padding: 9px;
+  background: rgb(3, 73, 81);
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.data-table-wrapper {
+  display: block;
+  height: 100%;
+  overflow-y: auto;
+  border-top: 1px solid #ddd;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table td {
+  text-align: left;
+  padding: 8px 15px;
+  border: 1px solid #ddd;
+}
+
+.data-table th {
+  font-weight: bold;
+  text-align: left;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  background-color: rgb(3, 73, 81) !important;
+  color: #fff;
+  z-index: 1;
+}
+
+.data-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.data-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.action-btn {
+  padding: 4px 12px;
+  font-size: 14px;
+  text-decoration: none;
+  color: green;
+
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+}
+.reset-btn {
+  padding: 4px 12px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #fff;
+
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* .action-btn:hover {
+  background-color: #218838;
+} */
+
+.div-sys-button {
+  width: 310px;
+  display: flex;
+  padding: 19px;
+  gap: 8px;
+  justify-content: end;
+  margin-top: 10%;
+}
+.div-sys-button-customer {
+  width: 310px;
+  display: flex;
+  padding: 19px;
+  gap: 8px;
+  justify-content: end;
+  margin-top: 1%;
+}
+
+/* Container */
+.input-container-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Wrapper for input and label */
+.material-textfield-user {
+  position: relative;
+  display: inline-block;
+  width: 100%; /* Adjust as needed */
+  margin-top: 25px;
+}
+
+/* Input styles */
+.input-field-user {
+  font-size: 1rem;
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 10px;
+  width: 95%;
+  color: black;
+  transition: border-color 0.2s ease-out;
+}
+
+/* Input focus state */
+.input-field-user:focus {
+  border-color: rgb(4, 139, 255);
+}
+
+/* Label styles */
+.input-label-user {
+  position: absolute;
+  font-size: 1rem;
+  left: 10px; /* Adjust to match padding of input */
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  color: gray;
+  padding: 0 0.3rem;
+  transition: 0.2s ease-out;
+  pointer-events: none; /* Prevent label from interfering with input click */
+}
+
+/* Label moves up when input is focused or has value */
+.input-field-user:focus + .input-label-user,
+.input-field-user:not(:placeholder-shown) + .input-label-user {
+  top: -2px;
+  left: 5px;
+  font-size: 12px;
+  color: rgb(4, 139, 255);
+  font-weight: bold;
+}
+
+/* Placeholder hidden when input is focused or has value */
+.input-field-user:focus::placeholder,
+.input-field-user:not(:placeholder-shown)::placeholder {
+  opacity: 0;
+}
+
+.pass-btn {
+  margin-left: 66%;
+  border-radius: 10px;
+  background-color: white;
+  font-size: 16px;
+
+  font-weight: bold;
+  padding: 5px 10px 5px 10px;
+  border: 2px solid rgb(235, 235, 235);
+}
+
+.active-tab {
+  background-color: rgb(3, 73, 81);
+
+  color: white; /* Active tab text color */
+  /* border: 1px solid #0056b3; Active tab border */
+  font-weight: bold;
+}
+.tab-button.active-tab {
+  background-color: rgb(235, 235, 235);
+  color: black;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.pagination-controls-user {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  float: right;
+  margin-right: 42px;
+}
+
+.pagination-controls-button-user {
+  padding: 5px 15px;
+  border: 1px solid #ccc;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination-controls-button-user[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+.button-inventory1 {
+  width: 8%;
+  height: 36px;
+  padding: 7px;
+  background-color: green;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-weight: bold;
+}
+
+
+.modal-container.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1050;
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.modal-inner {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1040;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+
+
+.button-inventory2 {
+  width: 69px;
+  height: 27px;
+  padding: 2px;
+  background-color: green;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-weight: bold;
+}
+
+
+
+.adjusted-bottom {
+  bottom: 78px !important;
+}
+
+
+
+.select-type-user{
+  display: flex;
+    position: relative;
+    top: 12px;
+    gap: 16px;
+}

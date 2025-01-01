@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Menu and Action for Customer -->
+    <record id="action_our_customer" model="ir.actions.act_window">
+        <field name="name">Customers</field>
+        <field name="res_model">our.customer</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first customer.
+            </p>
+        </field>
+    </record>
+
+    <!-- <menuitem id="menu_our_customer" name="Customers"
+              parent="inventory_management_master.new_menu_admin_settings"
+              action="action_our_customer" sequence="10"/> -->
+
+    <!-- Tree and Form View for Customers -->
+    <record id="view_our_customer_tree" model="ir.ui.view">
+        <field name="name">our.customer.tree</field>
+        <field name="model">our.customer</field>
+        <field name="arch" type="xml">
+            <tree string="Customer List">
+                <field name="name"/>
+                <field name="number"/>
+                <field name="email"/>
+          
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_our_customer_form" model="ir.ui.view">
+        <field name="name">our.customer.form</field>
+        <field name="model">our.customer</field>
+        <field name="arch" type="xml">
+            <form string="Customer Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="number"/>
+                        <field name="email"/>
+                        <field name="address"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Menu and Action for Vendor -->
+    <record id="action_our_vendor" model="ir.actions.act_window">
+        <field name="name">Vendors</field>
+        <field name="res_model">our.vendor</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first vendor.
+            </p>
+        </field>
+    </record>
+
+    <!-- <menuitem id="menu_our_vendor" name="Vendors"
+              parent="inventory_management_master.new_menu_admin_settings"
+              action="action_our_vendor" sequence="20"/> -->
+
+    <!-- Tree and Form View for Vendors -->
+    <record id="view_our_vendor_tree" model="ir.ui.view">
+        <field name="name">our.vendor.tree</field>
+        <field name="model">our.vendor</field>
+        <field name="arch" type="xml">
+            <tree string="Vendor List">
+                <field name="name"/>
+                <field name="number"/>
+                <field name="email"/>
+              
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_our_vendor_form" model="ir.ui.view">
+        <field name="name">our.vendor.form</field>
+        <field name="model">our.vendor</field>
+        <field name="arch" type="xml">
+            <form string="Vendor Form">
+                <sheet>
+                    <group>
+                     <field name="name"/>
+                <field name="number"/>
+                <field name="email"/>
+                <field name="address"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

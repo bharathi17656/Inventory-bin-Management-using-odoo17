@@ -1,0 +1,103 @@
+
+<templates>
+    <t t-name="ExistingBinManagement">
+
+
+
+     <div class="body-div-bin">
+            <div style="display: grid; grid-template-columns: 30% 1fr">
+                <div class="bin-form">
+                   
+                    <div class="form-container1">
+                        <form id="dropdownForm"  class="form-bin">
+                           
+                            <div class="input-container">
+                                <label for="country" class="label-bin">Warehouse</label>
+                                <select  name="country" class="select-bin" id="warehouseSelect country" t-on-change="onWarehouseChildChange">
+                                    <option value="select">Select Warehouse</option>
+                                    <t t-foreach="state.child_list" t-as="child" t-key="child.id">
+                                        <option t-att-value="child.id" t-esc="child.name" />
+                                    </t>
+                                </select>
+                                 <t t-if="state.error_warehouse != null "><p class="error-message-rack " t-esc="state.error_warehouse" /></t>
+                            </div>
+                            <div class="input-container">
+                                <label for="state" class="label-bin">Rack Name</label>
+                                <select  name="state" class="select-bin" id="rackSelect state" t-on-change="onrackChange">
+                                    <option value="select"> Select Rack </option>
+                                    <t t-foreach="state.rack_list" t-as="rack" t-key="rack.id">
+                                        <option t-att-value="rack.id" t-esc="rack.name" />
+                                    </t>
+                                </select>
+                                 <t t-if="state.error_rackname != null "><p class="error-message-rack " t-esc="state.error_rackname" /></t>
+                            </div>
+                            <div class="input-row">
+                                <label for="gender"  class="label-bin">Row</label>
+                                <input type="text" class="row-input" placeholder="0" t-model="state.row" required="true"/>
+                                 <t t-if="state.error_row!= null "><p class="error-message-rack " t-esc="state.error_row" /></t>
+                                <label for="gender" class="label-bin">Column</label>
+                                <input type="text"  class="column-input" placeholder="0" t-model="state.col"/>
+                                 <t t-if="state.error_col != null "><p class="error-message-rack " t-esc="state.error_col" /></t>
+                                  <t t-if="state.error_row_col != null "><p class="error-message-rack " t-esc="state.error_row_col" /></t>
+                            </div>
+                            <div class="button-container">
+                            
+                                <button type="button" class="button-bin-submit"   t-on-click="updateRecordDetails">Submit</button>
+                                    <button type="button" class="button-bin-clear"  t-on-click="clearBins" >Clear</button>
+
+                                   
+                          
+                                
+                            </div>
+                             <div id="successPopup" style="display: none; position: absolute; bottom: 10%; left: 50%; transform: translate(-50%, -50%); background: rgb(44 102 142); color: white; padding: 20px; border-radius: 10px; z-index: 1000; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                                    Transfer submitted successfully!
+                                </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="bin-form-2">
+                    <t t-if="state.total_bin > 0">
+                        <div class="bin-allocation" t-att-style="'display: grid; grid-template-columns:' + state.grid">
+                            <t t-foreach="state.bin_details" t-as="bin" t-key="bin.id">
+                                <div class="bin-box card">
+                                    <div class="content-box">
+                                        <div class="front">
+                                            <p class="align-row" t-esc="'R' + bin.bin_row + ' ' + 'C' + bin.bin_col" />
+                                            <p class="bin-checkbox bin-checkbox1">Bin available</p>
+                                            <input type="checkbox" class="bin-checkbox"  t-model="bin.bin_available"  t-att-checked="bin.bin_available" />
+                                            <!-- Dynamic input fields for each bin with unique placeholders -->
+                                            <input 
+                                        class="bin-input-value" 
+                                        t-model="bin.name" 
+                                        t-att-disabled="!bin.bin_available"
+                                        t-att-placeholder="'Enter name for ' + (bin.product_name || 'product')" 
+                                    />
+                                            <select class="select-one product-list" 
+                                            t-att-value="bin.product_id" 
+                                            t-on-change="(event) => onchangeproduct(event,bin.id)"
+                                            t-att-disabled="!bin.bin_available"
+                                            >
+                                                <option value="">-- Select Product --</option>
+                                                <t t-foreach="state.product_list" t-as="product" t-key="product.id">
+                                                    <option t-att-value="product.id" t-esc="product.name"  t-att-selected="product.id === bin.product_id"  />
+                                                </t>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </div>
+       
+
+
+
+
+
+
+       
+    </t>
+</templates> 

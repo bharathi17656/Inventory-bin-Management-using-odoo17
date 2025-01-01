@@ -1,0 +1,182 @@
+.body-div-warehouse {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+
+    height: 96vh;
+   
+  }
+  .menu-bar-warehouse {
+    display: flex
+;
+    background-color: rgb(217, 217, 217);
+    padding: 9px 1px 7px 15px;
+    border-radius: 12px;
+    width: 14%;
+    position: relative;
+    left: 11%;
+    margin-top: 1%;
+    margin-bottom: 2px;
+    position: absolute;
+    top: 34px;
+    height: 5vh;
+    left: 354px;
+  }
+  .menu-item-warehouse {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0 15px;
+    text-align: center;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .menu-item-svg-warehouse {
+    width: 18px;
+    height: 18px;
+   
+    position: relative;
+    right: 5px;
+  }
+  .menu-item-warehouse:hover {
+   color: #fff;
+    
+  }
+  .menu-item-warehouse:hover svg {
+    fill: #fff;
+  }
+  .span-value-warehouse {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .bin-form-warehouse {
+    height: 77vh;
+    width: 95%;
+    position: relative;
+    left: 19px;
+    margin-top: 10px;
+    background-color: rgb(217, 217, 217);
+    border-radius: 30px;
+  }
+  .bin-form-2-warehouse {
+    height: 77vh;
+    width: 117vh;
+    position: relative;
+    left: 19px;
+    margin-top: 10px;
+    background-color: rgb(217, 217, 217);
+    border-radius: 30px;
+    background-image: url(../../images/inv-bin.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+
+/* 
+  form styles */
+  .fom-heading-warehouse {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
+    position: relative;
+    left: 14%;
+    top: 5%;
+    color: black;
+  }
+
+  
+
+
+.form-container-warehouse {
+padding: 20px;
+border-radius: 8px;
+
+width: 100%;
+max-width: 343px;
+margin-left: 65px;
+margin-top: 10%;
+}
+
+
+.form-warehouse {
+display: flex;
+flex-direction: column;
+}
+
+.input-container-warehouse {
+margin-bottom: 10px;
+}
+
+.label-warehouse {
+margin-bottom: 5px;
+    font-weight: bold;
+    margin-left: 7px;
+    color: black;
+}
+
+.select-warehouse {
+width: 100%;
+padding: 10px;
+margin-top: 5px;
+border: 1px solid #ccc;
+border-radius: 20px;
+font-size: 16px;
+appearance: none;
+    
+    background: url("data:image/svg+xml,<svg height='10px' width='10px' viewBox='0 0 16 16'  xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>") no-repeat;
+background-position: calc(100% - 0.75rem) center !important;
+
+padding-right: 2rem !important;
+background-color: #fff;
+}
+.input-warehouse{
+width: 100%;
+padding: 10px;
+margin-top: 5px;
+border: 1px solid #ccc;
+border-radius: 20px;
+font-size: 16px; 
+}
+
+.error-message-warehouse {
+color: red;
+font-size: 14px;
+margin-top: 5px;
+display: none;
+}
+
+
+
+
+
+
+.button-container-warehouse {
+display: flex; /* Arrange children in a row */
+justify-content: space-between; /* Even spacing between buttons */
+gap: 10px; /* Optional: Space between buttons */
+margin-top: 5%;
+}
+
+
+.button-warehouse {
+flex: 1; /* Make both buttons take equal width */
+padding: 10px; /* Add padding for better appearance */
+background-color: #007bff; /* Blue background */
+color: white; /* White text */
+border: none; /* Remove borders */
+border-radius: 20px; /* Rounded corners */
+font-size: 18px; /* Font size */
+cursor: pointer; /* Pointer cursor on hover */
+text-align: center; /* Center text */
+font-weight: bold;
+}
+
+
+.button-warehouse:hover {
+background-color: #0056b3; /* Darker blue on hover */
+}
+
+

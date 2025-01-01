@@ -1,0 +1,247 @@
+/* @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100); */
+@import url(https://fonts.googleapis.com/css2?family=Afacad+Flux&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);
+
+.dashboard-inventory {
+  width: 97%;
+  height: 200vh;
+  padding: 10px;
+  overflow-y: scroll !important;
+}
+
+.scrollable-dashboard {
+  height: 85vh; 
+  overflow-y: auto;
+  overflow-x: hidden;
+ 
+ 
+}
+
+.dashboard-head {
+  background: rgb(235, 235, 235);
+  padding: 15px;
+}
+
+.dashboard1 {
+  height: 21vh;
+  display: flex;
+  gap: 25px;
+  background: rgb(235, 235, 235);
+}
+.left-dashboard,
+.right-dashboard {
+  width: 50em;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 13px;
+}
+
+.left-dashboard .top-box,
+.right-dashboard .top-box {
+  display: flex;
+  gap: 129px;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+}
+
+.top-box h1 {
+  font-size: 1.3rem;
+}
+
+.top-box div {
+  width: 17vw;
+}
+.left-dashboard .bottom-box,
+.right-dashboard .bottom-box {
+  height: -webkit-fill-available;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px 46px;
+  gap: 55px;
+}
+
+.dashboard2 {
+  padding: 21px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+.topmovedproduct {
+  width: 49%;
+  height: 54vh;
+  padding: 21px;
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 16px;
+}
+
+.topmovedproduct .top-box {
+  display: flex;
+  gap: 157px;
+  justify-content: center;
+  align-items: center;
+}
+
+.topmovedproduct .bottom-box {
+  height: 88%;
+  padding: 10px;
+}
+
+/* dashboard input field */
+
+/* Container */
+.input-container-dashboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Wrapper for input and label */
+.material-textfield-dashboard {
+  position: relative;
+  display: inline-block;
+  width: 100%; /* Adjust as needed */
+  margin-top: 25px;
+}
+
+/* Input styles */
+.input-field-dashboard {
+  font-size: 1rem;
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 6px;
+  width: 95%;
+  color: rgb(0, 0, 0);
+  transition: border-color 0.2s ease-out;
+}
+
+/* Input focus state */
+.input-field-dashboard:focus {
+  border-color: green;
+}
+
+/* Label styles */
+.input-label-dashboard {
+  position: absolute;
+  font-size: 1rem;
+  left: 10px; /* Adjust to match padding of input */
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  color: gray;
+  padding: 0 0.3rem;
+  transition: 0.2s ease-out;
+  pointer-events: none; /* Prevent label from interfering with input click */
+}
+
+/* Label moves up when input is focused or has value */
+.input-field-dashboard:focus + .input-label-dashboard,
+.input-field-dashboard:not(:placeholder-shown) + .input-label-dashboard {
+  top: -2px;
+  left: 5px;
+  font-size: 12px;
+  color: rgb(3, 73, 81);
+  font-weight: bold;
+}
+
+/* Placeholder hidden when input is focused or has value */
+.input-field-dashboard:focus::placeholder,
+.input-field-dashboard:not(:placeholder-shown)::placeholder {
+  opacity: 0;
+}
+.input-field-dashboard-select {
+  font-size: 1rem;
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 10px;
+  width: 95%;
+  color: gray;
+  transition: border-color 0.2s ease-out;
+}
+
+.select-dashboard-select {
+  appearance: none;
+
+  background: url("data:image/svg+xml,<svg height='10px' width='10px' viewBox='0 0 16 16'  xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>")
+    no-repeat;
+  background-position: calc(100% - 0.75rem) center !important;
+
+  padding-right: 2rem !important;
+}
+.select-dashboard {
+  appearance: none;
+
+  background: url("data:image/svg+xml,<svg height='10px' width='10px' viewBox='0 0 16 16'  xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>")
+    no-repeat;
+  background-position: calc(100% - 0.75rem) center !important;
+
+  padding-right: 2rem !important;
+}
+
+/* table style */
+
+.table-container-dashboard {
+  width: 100%;
+  margin: 9px 0 0 0px;
+  background: antiquewhite;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.data-table-wrapper-dashboard {
+  display: block;
+  height: 38vh;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table td {
+  text-align: left;
+  padding: 8px 15px;
+  border: 1px solid #ddd;
+}
+
+.data-table th {
+  font-weight: bold;
+  text-align: left;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  background-color: #f4f4f4;
+
+  z-index: 1;
+}
+
+.data-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.data-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+
+
+.buttons-main-page {
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #4b5296;
+  font-weight: 600;
+  background-color: rgb(255 255 255);
+  float: right;
+  position: relative;
+  padding: 3px 10px 3px 10px;
+  margin-right: 26px;
+  bottom: 34px;
+}

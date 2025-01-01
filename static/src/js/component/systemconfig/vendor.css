@@ -1,0 +1,202 @@
+.twogrid1-vendor {
+  display: grid;
+  grid-template-columns: 32% 1fr;
+
+  height: 92vh;
+  width: 93vw;
+}
+
+.bin-form-vendor {
+  height: 79vh;
+  width: 95%;
+  position: relative;
+  left: 19px;
+  margin-top: 10px;
+  background-color: rgb(235, 235, 235);
+  border-radius: 20px;
+}
+
+.leftdiv1-vendor {
+  margin-top: 15px;
+}
+.rightdiv1-vendor {
+  background-color: rgb(235, 235, 235);
+  margin-top: 10px;
+  margin-left: 10px;
+  height: 79vh;
+  border-radius: 20px;
+}
+
+.form-container-vendor {
+  padding: 0px 20px 0px 20px;
+  height: 46vh;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 343px;
+  margin-left: 54px;
+}
+
+/* table style */
+
+.table-container-vendor {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.data-table-vendor {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table-vendor td {
+  text-align: left;
+  padding: 4px 15px;
+  border: 1px solid #ddd;
+}
+
+.data-table-vendor th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+  text-align: left;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+.data-table-vendor tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.data-table-vendor tr:hover {
+  background-color: #f1f1f1;
+}
+
+.action-btn-vendor {
+  padding: 4px 12px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #28a745;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+}
+
+.action-btn-vendor :hover {
+  background-color: #218838;
+}
+
+/* Container */
+.input-container-vendor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Wrapper for input and label */
+.material-textfield-vendor {
+  position: relative;
+  display: inline-block;
+  width: 100%; /* Adjust as needed */
+  margin-top: 20px;
+}
+
+/* Input styles */
+.input-field-vendor {
+  font-size: 1rem;
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 10px;
+  width: 95%;
+  color: black;
+  transition: border-color 0.2s ease-out;
+}
+
+/* Input focus state */
+.input-field-vendor:focus {
+  border-color: rgb(4,139,255);
+}
+
+/* Label styles */
+.input-label-vendor {
+  position: absolute;
+  font-size: 1rem;
+  left: 10px; /* Adjust to match padding of input */
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  color: gray;
+  padding: 0 0.3rem;
+  transition: 0.2s ease-out;
+  pointer-events: none; /* Prevent label from interfering with input click */
+}
+
+/* Label moves up when input is focused or has value */
+.input-field-vendor:focus + .input-label-vendor,
+.input-field-vendor:not(:placeholder-shown) + .input-label-vendor {
+  top: -2px;
+  left: 5px;
+  font-size: 12px;
+  color: rgb(4,139,255);
+  font-weight: bold;
+}
+
+/* Placeholder hidden when input is focused or has value */
+.input-field-vendor:focus::placeholder,
+.input-field-vendor:not(:placeholder-shown)::placeholder {
+  opacity: 0;
+}
+
+.material-textfield-vendor1 {
+  position: relative;
+  display: block;
+  width: 50%; /* Adjust as needed */
+  margin-top: 10px;
+}
+.input-field-vendor1 {
+  font-size: 1rem;
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 10px;
+  width: 95%;
+  color: gray;
+  transition: border-color 0.2s ease-out;
+}
+.material-textfield-vendor2 {
+  position: relative;
+  display: flex;
+  width: 98%;
+  margin-top: 10px;
+}
+
+
+
+
+.pagination-controls-vendor {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  float: right;
+  margin-right: 45px;
+}
+
+.pagination-controls-button-vendor {
+  padding: 5px 15px;
+  border: 1px solid #ccc;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination-controls-button-vendor[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
