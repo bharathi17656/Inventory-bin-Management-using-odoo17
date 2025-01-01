@@ -1,0 +1,1 @@
+# Inventory-bin-Management-using-odoo17
